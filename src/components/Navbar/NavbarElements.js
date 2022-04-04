@@ -34,7 +34,7 @@ export const NavLogo = styled(LinkR)`
     color: #000;
     justify-self: flex-start;
     cursor: pointer;
-    font-family: 'Roboto';
+    font-family: 'Regular';
     font-size: 2.5rem;
     display: flex;
     align-items: center;
@@ -80,7 +80,7 @@ export const NavLinks = styled(LinkS)`
     display: flex;
     align-items: center;
     font-weight: bold;
-    font-family: 'Roboto';
+    font-family: 'Regular';
     font-size: 1.3rem;
     text-decoration: none;
     padding: 0 1rem;
@@ -106,7 +106,7 @@ export const NavBtnLink = styled(LinkR)`
     background-color: #bfbdc1;
     white-space: nowrap;
     font-weight: bold;
-    font-family: 'Roboto';
+    font-family: 'Regular';
     padding:  10px 22px;
     color: #000;
     font-size: 1.3rem;
