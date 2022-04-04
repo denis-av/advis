@@ -2,5 +2,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Roboto';
+  font-family: 'Regular';
+}
+
+@font-face {
+  font-family: "Regular";   /*Can be any text*/
+  src: local("GilmerRegular"),
+    url("./fonts/Gilmer-Font/GilmerRegular.otf") format("truetype");
 }
