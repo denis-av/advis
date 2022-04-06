@@ -21,7 +21,7 @@ export const homeObjThree = {
     lightBg: true,
     lightText: false,
     lightTextDesc: false,
-    topLine: 'Alătură-te comunitații',
+    topLine: 'Alătură-te comunitații noastre',
     headLine: 'Crearea unui cont este foarte ușoară',
     description: 'Intră în comunitatea ADVIS și profită de multitudinea de diagrame pe care le poți construi în doar câteva minute.',
     buttonLabel: 'Alătură-te',

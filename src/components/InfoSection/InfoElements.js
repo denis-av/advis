@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {Link as LinkR} from 'react-router-dom';
 
 export const InfoContainer = styled.div`
     color: #f9f9f9;
@@ -101,4 +102,26 @@ export const Img = styled.img`
     width: 100%;
     margin: 0 0 10px 0;
     padding-right: 0;
+`;
+
+export const NavBtnLink = styled(LinkR)`
+    border-radius: 50px;
+    background-color: #bfbdc1;
+    white-space: nowrap;
+    font-weight: bold;
+    font-family: 'Regular';
+    padding:  10px 22px;
+    color: #000;
+    font-size: 1.3rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        background: #DBD4CE;
+        color: #000;
+    }
 `;
