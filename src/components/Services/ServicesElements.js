@@ -21,6 +21,10 @@ export const ServicesContainer = styled.div`
     justify-content: center;
     align-items: center;
 
+    @media screen  and (max-width: 1100px){
+        height: 1300px;
+    }
+
     @media screen  and (max-width: 768px){
         height: 1500px;
     }
@@ -84,9 +88,14 @@ export const ServicesH1 = styled.h1`
     font-weight: bold;
     font-family: 'Regular';
     margin-bottom: 15vh;
+    top: 10vh;
+
+    @media screen and (max-width:820px){
+        font-size: 2rem;
+    }
 
     @media screen and (max-width:480px){
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 `
 
