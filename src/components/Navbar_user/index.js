@@ -3,29 +3,32 @@ import {FaBars} from 'react-icons/fa';
 import {Nav,NavbarContainer,NavLogo, MobileIcon, NavMenu, NavLinks, NavItem, NavBtn, NavBtnLink} from "./NavbarElements";
 
 
-export default class Navbar extends React.Component {
+export default class NavbarUser extends React.Component {
   render(){
     return (
       <>
       <Nav>
         <NavbarContainer>
-          <NavLogo to='/home'>advis</NavLogo>
+          <NavLogo to='/mainPage'>advis</NavLogo>
           <MobileIcon onClick={this.props.toggle}>
               <FaBars />
           </MobileIcon>
           <NavMenu>
               <NavItem>
-                  <NavLinks to='about'>Despre</NavLinks>
+                  <NavLinks to='/diagramPage'>Proiecte</NavLinks>
               </NavItem>
               <NavItem>
-                  <NavLinks to='services'>Servicii</NavLinks>
+                  <NavLinks to='/createDiagram'>Crează</NavLinks>
               </NavItem>
               <NavItem>
-                  <NavLinks to='signup'>Înregistrare</NavLinks>
+                  <NavLinks to=''>Documentatie</NavLinks>
+              </NavItem>
+              <NavItem>
+                  <NavLinks to=''>Profil</NavLinks>
               </NavItem>
           </NavMenu>
           <NavBtn>
-              <NavBtnLink to='/signin'>Login</NavBtnLink>
+              <NavBtnLink to='/home'>Logout</NavBtnLink>
           </NavBtn>
         </NavbarContainer>
       </Nav>

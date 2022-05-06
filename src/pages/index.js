@@ -8,25 +8,32 @@ import Services from '../components/Services';
 import Sidebar from '../components/Sidebar'
 import Footer from '../components/Footer';
 
-const Home = () => {
+export default class Home extends React.Component {
 
-    const [isOpen, setIsOpen] = useState(false);
+    constructor(){
+        super();
+        this.state = {
+            isOpen: false,
+        }
 
-    const toggle = () =>{
-        setIsOpen(!isOpen);
+        this.toggle = this.toggle.bind(this);
     }
 
-    return (
-        <>
-            <Sidebar isOpen={isOpen} toggle={toggle} />
-            <Navbar toggle={toggle}/>
-            <HeroSection />
-            <InfoSection {...homeObjOne}/>
-            <Services />
-            <SignUpSection {...homeObjThree} />
-            <Footer />
-        </>
-    )
-}
+    toggle = () =>{
+        this.setState({isOpen: !this.state.isOpen});
+    }
 
-export default Home
+    render(){
+        return (
+            <>
+                <Sidebar isOpen={this.state.isOpen} toggle={this.toggle} />
+                <Navbar toggle={this.toggle}/>
+                <HeroSection />
+                <InfoSection {...homeObjOne}/>
+                <Services />
+                <SignUpSection {...homeObjThree} />
+                <Footer />
+            </>
+        )
+    }
+}

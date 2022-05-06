@@ -1,0 +1,65 @@
+html, body{
+    min-height: 100%;
+} 
+
+#chart {
+    max-width: 100%;
+    overflow:auto;
+  }
+  text {
+    pointer-events: none;
+  }
+  .grandparent text {
+    font-weight: bold;
+  }
+  rect {
+    stroke: #fff;
+    stroke-width: 2px;
+  }
+  rect.parent,
+  .grandparent rect {
+    stroke-width: 3px;
+  }
+  .children rect.parent,
+  .grandparent rect {
+    cursor: pointer;
+  }
+  .children rect.child {
+    opacity: 0;
+  }
+
+  .form-group {
+      text-align:left;
+  }
+  .textdiv {
+      font-size: 14px;
+      padding: 5px;
+      cursor: pointer;
+      overflow:none;
+  }
+  .textdiv .title {
+      font-size: 102%;
+      font-weight: bold;
+      margin-top: 8px;
+      font-size:11px !important;
+  }
+  .textdiv p{
+      line-height: 13px;
+      margin:0 0 0px !important;
+      padding:0px;
+      font-size:10px !important;
+  }
+
+  .toolTip {
+    position: absolute;
+    display: none;
+    width: auto;
+    height: auto;
+    background: none repeat scroll 0 0 white;
+    border: 0 none;
+    border-radius: 8px 8px 8px 8px;
+    color: black;
+    font: 12px sans-serif;
+    padding: 5px;
+    text-align: center;
+  }

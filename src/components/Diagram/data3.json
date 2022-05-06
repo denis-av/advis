@@ -1,0 +1,2585 @@
+{  "name": "JDFApplication",
+    "children": [{
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "id": "12",
+                  "value": "37",
+                  "ParentID": "4",
+                  "methodsNumber": "7",
+                  "name": "AssignUnassignMediaTrayDelegates"
+                },
+                {
+                  "id": "13",
+                  "value": "108",
+                  "ParentID": "4",
+                  "methodsNumber": "20",
+                  "name": "JDFJMFSubmitter"
+                },
+                {
+                  "id": "14",
+                  "value": "29",
+                  "ParentID": "4",
+                  "methodsNumber": "4",
+                  "name": "ReceivedMessageDelegates"
+                },
+                {
+                  "id": "15",
+                  "value": "29",
+                  "ParentID": "4",
+                  "methodsNumber": "4",
+                  "name": "SubscriptionMessageDelegates"
+                },
+                {
+                  "id": "16",
+                  "value": "30",
+                  "ParentID": "4",
+                  "methodsNumber": "4",
+                  "name": "TimeOutDelegates"
+                }
+              ],
+              "id": "4",
+              "ParentID": "3",
+              "name": "UIController"
+            },
+            {
+              "children": [
+                {
+                  "id": "17",
+                  "value": "54",
+                  "ParentID": "5",
+                  "methodsNumber": "5",
+                  "name": "AbortQueueEntry"
+                },
+                {
+                  "id": "18",
+                  "value": "12",
+                  "ParentID": "5",
+                  "methodsNumber": "0",
+                  "name": "ActionJMF"
+                },
+                {
+                  "id": "19",
+                  "value": "51",
+                  "ParentID": "5",
+                  "methodsNumber": "5",
+                  "name": "AssignMediaToTray"
+                },
+                {
+                  "id": "20",
+                  "value": "30",
+                  "ParentID": "5",
+                  "methodsNumber": "4",
+                  "name": "CustomizableJMF"
+                },
+                {
+                  "id": "21",
+                  "value": "52",
+                  "ParentID": "5",
+                  "methodsNumber": "5",
+                  "name": "HoldQueueEntry"
+                },
+                {
+                  "id": "22",
+                  "value": "53",
+                  "ParentID": "5",
+                  "methodsNumber": "5",
+                  "name": "KnownDevices"
+                },
+                {
+                  "id": "23",
+                  "value": "51",
+                  "ParentID": "5",
+                  "methodsNumber": "5",
+                  "name": "KnownMessages"
+                },
+                {
+                  "id": "24",
+                  "value": "52",
+                  "ParentID": "5",
+                  "methodsNumber": "5",
+                  "name": "QueueStatus"
+                },
+                {
+                  "id": "25",
+                  "value": "53",
+                  "ParentID": "5",
+                  "methodsNumber": "5",
+                  "name": "RemoveQueueEntry"
+                },
+                {
+                  "id": "26",
+                  "value": "53",
+                  "ParentID": "5",
+                  "methodsNumber": "5",
+                  "name": "Resource"
+                },
+                {
+                  "id": "27",
+                  "value": "54",
+                  "ParentID": "5",
+                  "methodsNumber": "5",
+                  "name": "ResumeQueueEntry"
+                },
+                {
+                  "id": "28",
+                  "value": "30",
+                  "ParentID": "5",
+                  "methodsNumber": "4",
+                  "name": "SendFile"
+                },
+                {
+                  "id": "29",
+                  "value": "67",
+                  "ParentID": "5",
+                  "methodsNumber": "6",
+                  "name": "Status"
+                },
+                {
+                  "id": "30",
+                  "value": "74",
+                  "ParentID": "5",
+                  "methodsNumber": "6",
+                  "name": "StopPersistentChannel"
+                },
+                {
+                  "id": "31",
+                  "value": "52",
+                  "ParentID": "5",
+                  "methodsNumber": "5",
+                  "name": "SubmissionMethods"
+                },
+                {
+                  "id": "32",
+                  "value": "133",
+                  "ParentID": "5",
+                  "methodsNumber": "9",
+                  "name": "SubmitQueueEntry"
+                },
+                {
+                  "id": "33",
+                  "value": "51",
+                  "ParentID": "5",
+                  "methodsNumber": "5",
+                  "name": "UnassignMediaToTray"
+                }
+              ],
+              "id": "5",
+              "ParentID": "3",
+              "name": "SubmitterComponent"
+            },
+            {
+              "children": [
+                {
+                  "id": "34",
+                  "value": "218",
+                  "ParentID": "6",
+                  "methodsNumber": "9",
+                  "name": "HTTPServer"
+                },
+                {
+                  "id": "35",
+                  "value": "108",
+                  "ParentID": "6",
+                  "methodsNumber": "14",
+                  "name": "Server"
+                }
+              ],
+              "id": "6",
+              "ParentID": "3",
+              "name": "SenderRecevier"
+            },
+            {
+              "children": [
+                {
+                  "id": "36",
+                  "value": "107",
+                  "ParentID": "7",
+                  "methodsNumber": "4",
+                  "name": "HistoryManager"
+                }
+              ],
+              "id": "7",
+              "ParentID": "3",
+              "name": "HistoryManager"
+            },
+            {
+              "children": [
+                {
+                  "id": "37",
+                  "value": "23",
+                  "ParentID": "8",
+                  "methodsNumber": "0",
+                  "name": "ActionTypeEnumNotFound"
+                },
+                {
+                  "id": "38",
+                  "value": "23",
+                  "ParentID": "8",
+                  "methodsNumber": "0",
+                  "name": "QueryNotFoundException"
+                },
+                {
+                  "id": "39",
+                  "value": "23",
+                  "ParentID": "8",
+                  "methodsNumber": "0",
+                  "name": "SubmitterComponentClassNotFoundException"
+                },
+                {
+                  "id": "40",
+                  "value": "15",
+                  "ParentID": "8",
+                  "methodsNumber": "0",
+                  "name": "XMLNotFoundException"
+                }
+              ],
+              "id": "8",
+              "ParentID": "3",
+              "name": "Exceptions"
+            },
+            {
+              "children": [
+                {
+                  "id": "41",
+                  "value": "84",
+                  "ParentID": "9",
+                  "methodsNumber": "3",
+                  "name": "ActionInterpreter"
+                },
+                {
+                  "id": "42",
+                  "value": "460",
+                  "ParentID": "9",
+                  "methodsNumber": "30",
+                  "name": "CommandHandler"
+                },
+                {
+                  "id": "43",
+                  "value": "57",
+                  "ParentID": "9",
+                  "methodsNumber": "7",
+                  "name": "ConnectionManager"
+                },
+                {
+                  "id": "44",
+                  "value": "161",
+                  "ParentID": "9",
+                  "methodsNumber": "39",
+                  "name": "Utility"
+                }
+              ],
+              "id": "9",
+              "ParentID": "3",
+              "name": "Commander"
+            }
+          ],
+          "id": "3",
+          "ParentID": "2",
+          "name": "src"
+        },
+        {
+          "id": "10",
+          "value": "9",
+          "ParentID": "2",
+          "methodsNumber": "0",
+          "name": "Class1"
+        },
+        {
+          "id": "11",
+          "value": "14",
+          "ParentID": "2",
+          "methodsNumber": "1",
+          "name": "LogHelper"
+        }
+      ],
+      "id": "2",
+      "ParentID": "1",
+      "name": "Submitter"
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "id": "95",
+              "value": "20",
+              "ParentID": "47",
+              "methodsNumber": "4",
+              "name": "RuleConfig"
+            },
+            {
+              "id": "96",
+              "value": "29",
+              "ParentID": "47",
+              "methodsNumber": "5",
+              "name": "SpecificationValidator"
+            }
+          ],
+          "id": "47",
+          "ParentID": "46",
+          "name": "TicketValidator"
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "id": "103",
+                      "value": "47",
+                      "ParentID": "50",
+                      "methodsNumber": "34",
+                      "name": "DigitalPrintingParamsTemplate"
+                    },
+                    {
+                      "id": "104",
+                      "value": "36",
+                      "ParentID": "50",
+                      "methodsNumber": "24",
+                      "name": "InterpretingParamsTemplate"
+                    },
+                    {
+                      "id": "105",
+                      "value": "92",
+                      "ParentID": "50",
+                      "methodsNumber": "48",
+                      "name": "LayoutPreparationParamsTemplate"
+                    },
+                    {
+                      "id": "106",
+                      "value": "34",
+                      "ParentID": "50",
+                      "methodsNumber": "22",
+                      "name": "LayoutTemplate"
+                    },
+                    {
+                      "id": "107",
+                      "value": "13",
+                      "ParentID": "50",
+                      "methodsNumber": "2",
+                      "name": "MediaRef"
+                    },
+                    {
+                      "id": "108",
+                      "value": "65",
+                      "ParentID": "50",
+                      "methodsNumber": "44",
+                      "name": "MediaTemplate"
+                    },
+                    {
+                      "id": "109",
+                      "value": "28",
+                      "ParentID": "50",
+                      "methodsNumber": "16",
+                      "name": "RenderingParamsTemplate"
+                    }
+                  ],
+                  "id": "50",
+                  "ParentID": "49",
+                  "name": "Required"
+                },
+                {
+                  "children": [
+                    {
+                      "id": "110",
+                      "value": "40",
+                      "ParentID": "51",
+                      "methodsNumber": "8",
+                      "name": "ColorCorrectionParamsTemplate"
+                    },
+                    {
+                      "id": "111",
+                      "value": "41",
+                      "ParentID": "51",
+                      "methodsNumber": "8",
+                      "name": "ColorSpaceConversionParamsTemplate"
+                    },
+                    {
+                      "id": "112",
+                      "value": "60",
+                      "ParentID": "51",
+                      "methodsNumber": "4",
+                      "name": "ScreeningTemplate"
+                    },
+                    {
+                      "id": "113",
+                      "value": "75",
+                      "ParentID": "51",
+                      "methodsNumber": "16",
+                      "name": "TrappingDetailsTemplate"
+                    }
+                  ],
+                  "id": "51",
+                  "ParentID": "49",
+                  "name": "Optional"
+                },
+                {
+                  "children": [
+                    {
+                      "id": "114",
+                      "value": "56",
+                      "ParentID": "52",
+                      "methodsNumber": "20",
+                      "name": "AssemblyTemplate"
+                    },
+                    {
+                      "id": "115",
+                      "value": "31",
+                      "ParentID": "52",
+                      "methodsNumber": "12",
+                      "name": "CoverApplicationParamsTemplate"
+                    },
+                    {
+                      "id": "116",
+                      "value": "42",
+                      "ParentID": "52",
+                      "methodsNumber": "18",
+                      "name": "FoldingParamsTemplate"
+                    },
+                    {
+                      "id": "117",
+                      "value": "34",
+                      "ParentID": "52",
+                      "methodsNumber": "8",
+                      "name": "GatheringParamsTemplate"
+                    },
+                    {
+                      "id": "118",
+                      "value": "31",
+                      "ParentID": "52",
+                      "methodsNumber": "10",
+                      "name": "GluingParamsTemplate"
+                    },
+                    {
+                      "id": "119",
+                      "value": "53",
+                      "ParentID": "52",
+                      "methodsNumber": "24",
+                      "name": "HoleMakingParamsTemplate"
+                    },
+                    {
+                      "id": "120",
+                      "value": "29",
+                      "ParentID": "52",
+                      "methodsNumber": "18",
+                      "name": "PlasticCombBindingParamsTemplate"
+                    },
+                    {
+                      "id": "121",
+                      "value": "31",
+                      "ParentID": "52",
+                      "methodsNumber": "20",
+                      "name": "SpineTapingParamsTemplate"
+                    },
+                    {
+                      "id": "122",
+                      "value": "31",
+                      "ParentID": "52",
+                      "methodsNumber": "20",
+                      "name": "StackingParamsTemplate"
+                    },
+                    {
+                      "id": "123",
+                      "value": "40",
+                      "ParentID": "52",
+                      "methodsNumber": "28",
+                      "name": "StitchingParamsTemplate"
+                    },
+                    {
+                      "id": "124",
+                      "value": "26",
+                      "ParentID": "52",
+                      "methodsNumber": "14",
+                      "name": "TrimmingParamsTemplate"
+                    },
+                    {
+                      "id": "125",
+                      "value": "35",
+                      "ParentID": "52",
+                      "methodsNumber": "24",
+                      "name": "WireCombBindingParamsTemplate"
+                    }
+                  ],
+                  "id": "52",
+                  "ParentID": "49",
+                  "name": "Finishing"
+                }
+              ],
+              "id": "49",
+              "ParentID": "48",
+              "name": "ResourcePoolElems"
+            },
+            {
+              "id": "97",
+              "value": "30",
+              "ParentID": "48",
+              "methodsNumber": "2",
+              "name": "AuditPool"
+            },
+            {
+              "id": "98",
+              "value": "24",
+              "ParentID": "48",
+              "methodsNumber": "10",
+              "name": "Contact"
+            },
+            {
+              "id": "99",
+              "value": "31",
+              "ParentID": "48",
+              "methodsNumber": "10",
+              "name": "CustomerInfo"
+            },
+            {
+              "id": "100",
+              "value": "64",
+              "ParentID": "48",
+              "methodsNumber": "42",
+              "name": "JdfTicket"
+            },
+            {
+              "id": "101",
+              "value": "342",
+              "ParentID": "48",
+              "methodsNumber": "54",
+              "name": "ResourceLinkPool"
+            },
+            {
+              "id": "102",
+              "value": "155",
+              "ParentID": "48",
+              "methodsNumber": "56",
+              "name": "ResourcePoolTemplate"
+            }
+          ],
+          "id": "48",
+          "ParentID": "46",
+          "name": "TicketTemplate"
+        },
+        {
+          "children": [
+            {
+              "id": "126",
+              "value": "85",
+              "ParentID": "53",
+              "methodsNumber": "10",
+              "name": "TicketDatabase"
+            }
+          ],
+          "id": "53",
+          "ParentID": "46",
+          "name": "TicketRepository"
+        },
+        {
+          "children": [
+            {
+              "id": "127",
+              "value": "48",
+              "ParentID": "54",
+              "methodsNumber": "3",
+              "name": "JdfGenerator"
+            },
+            {
+              "id": "128",
+              "value": "172",
+              "ParentID": "54",
+              "methodsNumber": "6",
+              "name": "ModelGenerator"
+            },
+            {
+              "id": "129",
+              "value": "337",
+              "ParentID": "54",
+              "methodsNumber": "6",
+              "name": "ModelGeneratorMock"
+            },
+            {
+              "id": "130",
+              "value": "96",
+              "ParentID": "54",
+              "methodsNumber": "13",
+              "name": "TicketCreator"
+            },
+            {
+              "id": "131",
+              "value": "32",
+              "ParentID": "54",
+              "methodsNumber": "6",
+              "name": "TicketHandler"
+            },
+            {
+              "id": "132",
+              "value": "1545",
+              "ParentID": "54",
+              "methodsNumber": "41",
+              "name": "TicketWorker"
+            }
+          ],
+          "id": "54",
+          "ParentID": "46",
+          "name": "TicketGeneratorManager"
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "id": "145",
+                      "value": "31",
+                      "ParentID": "57",
+                      "methodsNumber": "1",
+                      "name": "BandHeight"
+                    },
+                    {
+                      "id": "146",
+                      "value": "32",
+                      "ParentID": "57",
+                      "methodsNumber": "1",
+                      "name": "BandOrdering"
+                    },
+                    {
+                      "id": "147",
+                      "value": "31",
+                      "ParentID": "57",
+                      "methodsNumber": "1",
+                      "name": "BandWidth"
+                    },
+                    {
+                      "id": "148",
+                      "value": "31",
+                      "ParentID": "57",
+                      "methodsNumber": "1",
+                      "name": "ColorantDepth"
+                    },
+                    {
+                      "id": "149",
+                      "value": "31",
+                      "ParentID": "57",
+                      "methodsNumber": "1",
+                      "name": "Interleaved"
+                    }
+                  ],
+                  "id": "57",
+                  "ParentID": "56",
+                  "name": "RenderingParams"
+                },
+                {
+                  "children": [
+                    {
+                      "id": "150",
+                      "value": "32",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "CustomMediaType"
+                    },
+                    {
+                      "id": "151",
+                      "value": "31",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "DescriptiveName"
+                    },
+                    {
+                      "id": "152",
+                      "value": "31",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "Dimension"
+                    },
+                    {
+                      "id": "153",
+                      "value": "31",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "HoleCount"
+                    },
+                    {
+                      "id": "154",
+                      "value": "32",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "HoleType"
+                    },
+                    {
+                      "id": "155",
+                      "value": "31",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "IDUsage"
+                    },
+                    {
+                      "id": "156",
+                      "value": "31",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "IDValue"
+                    },
+                    {
+                      "id": "157",
+                      "value": "31",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "ImagableSide"
+                    },
+                    {
+                      "id": "158",
+                      "value": "31",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "MediaColorDetails"
+                    },
+                    {
+                      "id": "159",
+                      "value": "33",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "MediaColorName"
+                    },
+                    {
+                      "id": "160",
+                      "value": "31",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "MediaColorNameDetails"
+                    },
+                    {
+                      "id": "161",
+                      "value": "31",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "MediaSetCount"
+                    },
+                    {
+                      "id": "162",
+                      "value": "32",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "MediaType"
+                    },
+                    {
+                      "id": "163",
+                      "value": "36",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "MediaTypeDetails"
+                    },
+                    {
+                      "id": "164",
+                      "value": "34",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "MediaUnit"
+                    },
+                    {
+                      "id": "165",
+                      "value": "32",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "Opacity"
+                    },
+                    {
+                      "id": "166",
+                      "value": "31",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "OpacityLevel"
+                    },
+                    {
+                      "id": "167",
+                      "value": "32",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "Texture"
+                    },
+                    {
+                      "id": "168",
+                      "value": "31",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "Thickness"
+                    },
+                    {
+                      "id": "169",
+                      "value": "31",
+                      "ParentID": "58",
+                      "methodsNumber": "1",
+                      "name": "Weight"
+                    }
+                  ],
+                  "id": "58",
+                  "ParentID": "56",
+                  "name": "MediaParams"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "id": "185",
+                              "value": "32",
+                              "ParentID": "61",
+                              "methodsNumber": "1",
+                              "name": "PositionX"
+                            },
+                            {
+                              "id": "186",
+                              "value": "32",
+                              "ParentID": "61",
+                              "methodsNumber": "1",
+                              "name": "PositionY"
+                            },
+                            {
+                              "id": "187",
+                              "value": "31",
+                              "ParentID": "61",
+                              "methodsNumber": "1",
+                              "name": "ShiftBack"
+                            },
+                            {
+                              "id": "188",
+                              "value": "31",
+                              "ParentID": "61",
+                              "methodsNumber": "1",
+                              "name": "ShiftFront"
+                            }
+                          ],
+                          "id": "61",
+                          "ParentID": "60",
+                          "name": "ImageShiftParams"
+                        },
+                        {
+                          "id": "184",
+                          "value": "31",
+                          "ParentID": "60",
+                          "methodsNumber": "1",
+                          "name": "ImageShift"
+                        }
+                      ],
+                      "id": "60",
+                      "ParentID": "59",
+                      "name": "PageCellParams"
+                    },
+                    {
+                      "id": "170",
+                      "value": "32",
+                      "ParentID": "59",
+                      "methodsNumber": "1",
+                      "name": "BindingEdge"
+                    },
+                    {
+                      "id": "171",
+                      "value": "31",
+                      "ParentID": "59",
+                      "methodsNumber": "1",
+                      "name": "CreepValue"
+                    },
+                    {
+                      "id": "172",
+                      "value": "32",
+                      "ParentID": "59",
+                      "methodsNumber": "1",
+                      "name": "FinishingOrder"
+                    },
+                    {
+                      "id": "173",
+                      "value": "32",
+                      "ParentID": "59",
+                      "methodsNumber": "1",
+                      "name": "FoldCatalog"
+                    },
+                    {
+                      "id": "174",
+                      "value": "33",
+                      "ParentID": "59",
+                      "methodsNumber": "1",
+                      "name": "FrontMarkList"
+                    },
+                    {
+                      "id": "175",
+                      "value": "31",
+                      "ParentID": "59",
+                      "methodsNumber": "1",
+                      "name": "Gutter"
+                    },
+                    {
+                      "id": "176",
+                      "value": "31",
+                      "ParentID": "59",
+                      "methodsNumber": "1",
+                      "name": "HorizontalCreep"
+                    },
+                    {
+                      "id": "177",
+                      "value": "32",
+                      "ParentID": "59",
+                      "methodsNumber": "1",
+                      "name": "MultipleUp"
+                    },
+                    {
+                      "id": "178",
+                      "value": "31",
+                      "ParentID": "59",
+                      "methodsNumber": "1",
+                      "name": "NumberUp"
+                    },
+                    {
+                      "id": "179",
+                      "value": "31",
+                      "ParentID": "59",
+                      "methodsNumber": "1",
+                      "name": "PageCell"
+                    },
+                    {
+                      "id": "180",
+                      "value": "32",
+                      "ParentID": "59",
+                      "methodsNumber": "1",
+                      "name": "Rotate"
+                    },
+                    {
+                      "id": "181",
+                      "value": "31",
+                      "ParentID": "59",
+                      "methodsNumber": "1",
+                      "name": "SameUp"
+                    },
+                    {
+                      "id": "182",
+                      "value": "32",
+                      "ParentID": "59",
+                      "methodsNumber": "1",
+                      "name": "Sides"
+                    },
+                    {
+                      "id": "183",
+                      "value": "32",
+                      "ParentID": "59",
+                      "methodsNumber": "1",
+                      "name": "SizePolicy"
+                    }
+                  ],
+                  "id": "59",
+                  "ParentID": "56",
+                  "name": "LayoutPreparatonParams"
+                },
+                {
+                  "children": [
+                    {
+                      "id": "189",
+                      "value": "32",
+                      "ParentID": "62",
+                      "methodsNumber": "1",
+                      "name": "Center"
+                    },
+                    {
+                      "id": "190",
+                      "value": "32",
+                      "ParentID": "62",
+                      "methodsNumber": "1",
+                      "name": "FitToPage"
+                    },
+                    {
+                      "id": "191",
+                      "value": "32",
+                      "ParentID": "62",
+                      "methodsNumber": "1",
+                      "name": "MirrorAround"
+                    },
+                    {
+                      "id": "192",
+                      "value": "32",
+                      "ParentID": "62",
+                      "methodsNumber": "1",
+                      "name": "Polarity"
+                    },
+                    {
+                      "id": "193",
+                      "value": "31",
+                      "ParentID": "62",
+                      "methodsNumber": "1",
+                      "name": "Poster"
+                    },
+                    {
+                      "id": "194",
+                      "value": "31",
+                      "ParentID": "62",
+                      "methodsNumber": "1",
+                      "name": "PosterOverlap"
+                    },
+                    {
+                      "id": "195",
+                      "value": "32",
+                      "ParentID": "62",
+                      "methodsNumber": "1",
+                      "name": "PrintQuality"
+                    },
+                    {
+                      "id": "196",
+                      "value": "31",
+                      "ParentID": "62",
+                      "methodsNumber": "1",
+                      "name": "Scaling"
+                    },
+                    {
+                      "id": "197",
+                      "value": "31",
+                      "ParentID": "62",
+                      "methodsNumber": "1",
+                      "name": "ScalingOrigin"
+                    }
+                  ],
+                  "id": "62",
+                  "ParentID": "56",
+                  "name": "InterpretingParams"
+                },
+                {
+                  "children": [
+                    {
+                      "id": "198",
+                      "value": "32",
+                      "ParentID": "63",
+                      "methodsNumber": "1",
+                      "name": "Automated"
+                    },
+                    {
+                      "id": "199",
+                      "value": "32",
+                      "ParentID": "63",
+                      "methodsNumber": "1",
+                      "name": "LockOrigins"
+                    },
+                    {
+                      "id": "200",
+                      "value": "31",
+                      "ParentID": "63",
+                      "methodsNumber": "1",
+                      "name": "MaxDocOrd"
+                    },
+                    {
+                      "id": "201",
+                      "value": "31",
+                      "ParentID": "63",
+                      "methodsNumber": "1",
+                      "name": "MaxOrd"
+                    },
+                    {
+                      "id": "202",
+                      "value": "31",
+                      "ParentID": "63",
+                      "methodsNumber": "1",
+                      "name": "MaxSetOrd"
+                    },
+                    {
+                      "id": "203",
+                      "value": "32",
+                      "ParentID": "63",
+                      "methodsNumber": "1",
+                      "name": "Name"
+                    },
+                    {
+                      "id": "204",
+                      "value": "32",
+                      "ParentID": "63",
+                      "methodsNumber": "1",
+                      "name": "SourceWorkStyle"
+                    }
+                  ],
+                  "id": "63",
+                  "ParentID": "56",
+                  "name": "ImpositionParams"
+                },
+                {
+                  "children": [
+                    {
+                      "id": "205",
+                      "value": "32",
+                      "ParentID": "64",
+                      "methodsNumber": "1",
+                      "name": "Collate"
+                    },
+                    {
+                      "id": "206",
+                      "value": "31",
+                      "ParentID": "64",
+                      "methodsNumber": "1",
+                      "name": "DirectProofAmount"
+                    },
+                    {
+                      "id": "207",
+                      "value": "32",
+                      "ParentID": "64",
+                      "methodsNumber": "1",
+                      "name": "ManualFeed"
+                    },
+                    {
+                      "id": "208",
+                      "value": "31",
+                      "ParentID": "64",
+                      "methodsNumber": "1",
+                      "name": "NonPrintableMarginBottom"
+                    },
+                    {
+                      "id": "209",
+                      "value": "31",
+                      "ParentID": "64",
+                      "methodsNumber": "1",
+                      "name": "NonPrintableMarginLeft"
+                    },
+                    {
+                      "id": "210",
+                      "value": "31",
+                      "ParentID": "64",
+                      "methodsNumber": "1",
+                      "name": "NonPrintableMarginRight"
+                    },
+                    {
+                      "id": "211",
+                      "value": "31",
+                      "ParentID": "64",
+                      "methodsNumber": "1",
+                      "name": "NonPrintableMarginTop"
+                    },
+                    {
+                      "id": "212",
+                      "value": "32",
+                      "ParentID": "64",
+                      "methodsNumber": "1",
+                      "name": "PageDelivery"
+                    },
+                    {
+                      "id": "213",
+                      "value": "32",
+                      "ParentID": "64",
+                      "methodsNumber": "1",
+                      "name": "PrintingType"
+                    },
+                    {
+                      "id": "214",
+                      "value": "32",
+                      "ParentID": "64",
+                      "methodsNumber": "1",
+                      "name": "PrintOrder"
+                    },
+                    {
+                      "id": "215",
+                      "value": "32",
+                      "ParentID": "64",
+                      "methodsNumber": "1",
+                      "name": "PrintQuality"
+                    },
+                    {
+                      "id": "216",
+                      "value": "32",
+                      "ParentID": "64",
+                      "methodsNumber": "1",
+                      "name": "SheetLay"
+                    }
+                  ],
+                  "id": "64",
+                  "ParentID": "56",
+                  "name": "DigitalPrintingParams"
+                },
+                {
+                  "id": "139",
+                  "value": "32",
+                  "ParentID": "56",
+                  "methodsNumber": "1",
+                  "name": "DigitalPrinting"
+                },
+                {
+                  "id": "140",
+                  "value": "30",
+                  "ParentID": "56",
+                  "methodsNumber": "1",
+                  "name": "Imposition"
+                },
+                {
+                  "id": "141",
+                  "value": "33",
+                  "ParentID": "56",
+                  "methodsNumber": "1",
+                  "name": "Interpreting"
+                },
+                {
+                  "id": "142",
+                  "value": "30",
+                  "ParentID": "56",
+                  "methodsNumber": "1",
+                  "name": "LayoutPreparation"
+                },
+                {
+                  "id": "143",
+                  "value": "32",
+                  "ParentID": "56",
+                  "methodsNumber": "1",
+                  "name": "Media"
+                },
+                {
+                  "id": "144",
+                  "value": "32",
+                  "ParentID": "56",
+                  "methodsNumber": "1",
+                  "name": "Rendering"
+                }
+              ],
+              "id": "56",
+              "ParentID": "55",
+              "name": "Required"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "id": "226",
+                          "value": "31",
+                          "ParentID": "67",
+                          "methodsNumber": "1",
+                          "name": "BlackColorLimit"
+                        },
+                        {
+                          "id": "227",
+                          "value": "31",
+                          "ParentID": "67",
+                          "methodsNumber": "1",
+                          "name": "BlackDensityLimit"
+                        },
+                        {
+                          "id": "228",
+                          "value": "31",
+                          "ParentID": "67",
+                          "methodsNumber": "1",
+                          "name": "BlackWidth"
+                        },
+                        {
+                          "id": "229",
+                          "value": "32",
+                          "ParentID": "67",
+                          "methodsNumber": "1",
+                          "name": "ImageInternalTrapping"
+                        },
+                        {
+                          "id": "230",
+                          "value": "32",
+                          "ParentID": "67",
+                          "methodsNumber": "1",
+                          "name": "ImageMaskTrapping"
+                        },
+                        {
+                          "id": "231",
+                          "value": "31",
+                          "ParentID": "67",
+                          "methodsNumber": "1",
+                          "name": "ImageResolution"
+                        },
+                        {
+                          "id": "232",
+                          "value": "32",
+                          "ParentID": "67",
+                          "methodsNumber": "1",
+                          "name": "ImageToImageTrapping"
+                        },
+                        {
+                          "id": "233",
+                          "value": "32",
+                          "ParentID": "67",
+                          "methodsNumber": "1",
+                          "name": "ImageToObjectTrapping"
+                        },
+                        {
+                          "id": "234",
+                          "value": "32",
+                          "ParentID": "67",
+                          "methodsNumber": "1",
+                          "name": "ImageTrapPlacement"
+                        },
+                        {
+                          "id": "235",
+                          "value": "31",
+                          "ParentID": "67",
+                          "methodsNumber": "1",
+                          "name": "ImageTrapWidth"
+                        },
+                        {
+                          "id": "236",
+                          "value": "31",
+                          "ParentID": "67",
+                          "methodsNumber": "1",
+                          "name": "ImageTrapWidthY"
+                        },
+                        {
+                          "id": "237",
+                          "value": "31",
+                          "ParentID": "67",
+                          "methodsNumber": "1",
+                          "name": "MinimumBlackWidth"
+                        },
+                        {
+                          "id": "238",
+                          "value": "31",
+                          "ParentID": "67",
+                          "methodsNumber": "1",
+                          "name": "SlidingTrapLimit"
+                        },
+                        {
+                          "id": "239",
+                          "value": "31",
+                          "ParentID": "67",
+                          "methodsNumber": "1",
+                          "name": "StepLimit"
+                        },
+                        {
+                          "id": "240",
+                          "value": "31",
+                          "ParentID": "67",
+                          "methodsNumber": "1",
+                          "name": "TrapColorScaling"
+                        },
+                        {
+                          "id": "241",
+                          "value": "32",
+                          "ParentID": "67",
+                          "methodsNumber": "1",
+                          "name": "TrapEndStyle"
+                        },
+                        {
+                          "id": "242",
+                          "value": "32",
+                          "ParentID": "67",
+                          "methodsNumber": "1",
+                          "name": "TrapJoinStyle"
+                        },
+                        {
+                          "id": "243",
+                          "value": "31",
+                          "ParentID": "67",
+                          "methodsNumber": "1",
+                          "name": "TrapWidth"
+                        },
+                        {
+                          "id": "244",
+                          "value": "31",
+                          "ParentID": "67",
+                          "methodsNumber": "1",
+                          "name": "TrapWidthY"
+                        }
+                      ],
+                      "id": "67",
+                      "ParentID": "66",
+                      "name": "TrappingParamsRes"
+                    },
+                    {
+                      "id": "221",
+                      "value": "32",
+                      "ParentID": "66",
+                      "methodsNumber": "1",
+                      "name": "DefaultTrapping"
+                    },
+                    {
+                      "id": "222",
+                      "value": "32",
+                      "ParentID": "66",
+                      "methodsNumber": "1",
+                      "name": "IgnoreFileParams"
+                    },
+                    {
+                      "id": "223",
+                      "value": "32",
+                      "ParentID": "66",
+                      "methodsNumber": "1",
+                      "name": "Trapping"
+                    },
+                    {
+                      "id": "224",
+                      "value": "31",
+                      "ParentID": "66",
+                      "methodsNumber": "1",
+                      "name": "TrappingOrder"
+                    },
+                    {
+                      "id": "225",
+                      "value": "31",
+                      "ParentID": "66",
+                      "methodsNumber": "1",
+                      "name": "TrappingParams"
+                    }
+                  ],
+                  "id": "66",
+                  "ParentID": "65",
+                  "name": "TrappingRes"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "id": "248",
+                          "value": "31",
+                          "ParentID": "69",
+                          "methodsNumber": "1",
+                          "name": "Angle"
+                        },
+                        {
+                          "id": "249",
+                          "value": "31",
+                          "ParentID": "69",
+                          "methodsNumber": "1",
+                          "name": "AngleMap"
+                        },
+                        {
+                          "id": "250",
+                          "value": "31",
+                          "ParentID": "69",
+                          "methodsNumber": "1",
+                          "name": "DotSize"
+                        },
+                        {
+                          "id": "251",
+                          "value": "31",
+                          "ParentID": "69",
+                          "methodsNumber": "1",
+                          "name": "Frequency"
+                        },
+                        {
+                          "id": "252",
+                          "value": "31",
+                          "ParentID": "69",
+                          "methodsNumber": "1",
+                          "name": "ScreeningFamily"
+                        },
+                        {
+                          "id": "253",
+                          "value": "32",
+                          "ParentID": "69",
+                          "methodsNumber": "1",
+                          "name": "ScreeningType"
+                        },
+                        {
+                          "id": "254",
+                          "value": "31",
+                          "ParentID": "69",
+                          "methodsNumber": "1",
+                          "name": "Separation"
+                        },
+                        {
+                          "id": "255",
+                          "value": "31",
+                          "ParentID": "69",
+                          "methodsNumber": "1",
+                          "name": "SourceFrequency"
+                        },
+                        {
+                          "id": "256",
+                          "value": "32",
+                          "ParentID": "69",
+                          "methodsNumber": "1",
+                          "name": "SourceObjects"
+                        },
+                        {
+                          "id": "257",
+                          "value": "34",
+                          "ParentID": "69",
+                          "methodsNumber": "1",
+                          "name": "SpotFunction"
+                        }
+                      ],
+                      "id": "69",
+                      "ParentID": "68",
+                      "name": "ScreenSelectorParams"
+                    },
+                    {
+                      "children": [
+                        {
+                          "id": "258",
+                          "value": "32",
+                          "ParentID": "70",
+                          "methodsNumber": "1",
+                          "name": "IgnoreSourceFile"
+                        }
+                      ],
+                      "id": "70",
+                      "ParentID": "68",
+                      "name": "ScreeningParamsRes"
+                    },
+                    {
+                      "id": "245",
+                      "value": "32",
+                      "ParentID": "68",
+                      "methodsNumber": "1",
+                      "name": "AbortJobWhenSceeningMatchingFails"
+                    },
+                    {
+                      "id": "246",
+                      "value": "31",
+                      "ParentID": "68",
+                      "methodsNumber": "1",
+                      "name": "ScreeningParams"
+                    },
+                    {
+                      "id": "247",
+                      "value": "31",
+                      "ParentID": "68",
+                      "methodsNumber": "1",
+                      "name": "ScreenSelector"
+                    }
+                  ],
+                  "id": "68",
+                  "ParentID": "65",
+                  "name": "ScreeningRes"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "id": "260",
+                          "value": "33",
+                          "ParentID": "72",
+                          "methodsNumber": "1",
+                          "name": "Operation"
+                        },
+                        {
+                          "id": "261",
+                          "value": "32",
+                          "ParentID": "72",
+                          "methodsNumber": "1",
+                          "name": "PreserveBlack"
+                        },
+                        {
+                          "id": "262",
+                          "value": "32",
+                          "ParentID": "72",
+                          "methodsNumber": "1",
+                          "name": "RenderingIntent"
+                        },
+                        {
+                          "id": "263",
+                          "value": "32",
+                          "ParentID": "72",
+                          "methodsNumber": "1",
+                          "name": "RGBGray2Black"
+                        },
+                        {
+                          "id": "264",
+                          "value": "31",
+                          "ParentID": "72",
+                          "methodsNumber": "1",
+                          "name": "RGBGray2BlackThreshold"
+                        },
+                        {
+                          "id": "265",
+                          "value": "33",
+                          "ParentID": "72",
+                          "methodsNumber": "1",
+                          "name": "SourceCS"
+                        },
+                        {
+                          "id": "266",
+                          "value": "32",
+                          "ParentID": "72",
+                          "methodsNumber": "1",
+                          "name": "SourceObject"
+                        },
+                        {
+                          "id": "267",
+                          "value": "32",
+                          "ParentID": "72",
+                          "methodsNumber": "1",
+                          "name": "SourceRenderingIntent"
+                        }
+                      ],
+                      "id": "72",
+                      "ParentID": "71",
+                      "name": "ColorSpaceConversionOpParams"
+                    },
+                    {
+                      "id": "259",
+                      "value": "30",
+                      "ParentID": "71",
+                      "methodsNumber": "1",
+                      "name": "ColorSpaceConversionOp"
+                    }
+                  ],
+                  "id": "71",
+                  "ParentID": "65",
+                  "name": "ColorSpaceConversion"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "id": "269",
+                          "value": "31",
+                          "ParentID": "74",
+                          "methodsNumber": "1",
+                          "name": "AdjustContrast"
+                        },
+                        {
+                          "id": "270",
+                          "value": "31",
+                          "ParentID": "74",
+                          "methodsNumber": "1",
+                          "name": "AdjustCyanRed"
+                        },
+                        {
+                          "id": "271",
+                          "value": "31",
+                          "ParentID": "74",
+                          "methodsNumber": "1",
+                          "name": "AdjustHue"
+                        },
+                        {
+                          "id": "272",
+                          "value": "31",
+                          "ParentID": "74",
+                          "methodsNumber": "1",
+                          "name": "AdjustLightness"
+                        },
+                        {
+                          "id": "273",
+                          "value": "31",
+                          "ParentID": "74",
+                          "methodsNumber": "1",
+                          "name": "AdjustMagentaGreen"
+                        },
+                        {
+                          "id": "274",
+                          "value": "31",
+                          "ParentID": "74",
+                          "methodsNumber": "1",
+                          "name": "AdjustSaturation"
+                        },
+                        {
+                          "id": "275",
+                          "value": "31",
+                          "ParentID": "74",
+                          "methodsNumber": "1",
+                          "name": "AdjustYellowBlue"
+                        },
+                        {
+                          "id": "276",
+                          "value": "32",
+                          "ParentID": "74",
+                          "methodsNumber": "1",
+                          "name": "SourceObjects"
+                        }
+                      ],
+                      "id": "74",
+                      "ParentID": "73",
+                      "name": "ColorCorrectionOpParams"
+                    },
+                    {
+                      "id": "268",
+                      "value": "31",
+                      "ParentID": "73",
+                      "methodsNumber": "1",
+                      "name": "ColorCorrectionOp"
+                    }
+                  ],
+                  "id": "73",
+                  "ParentID": "65",
+                  "name": "ColorCorrection"
+                },
+                {
+                  "id": "217",
+                  "value": "32",
+                  "ParentID": "65",
+                  "methodsNumber": "1",
+                  "name": "ColorCorrectionParams"
+                },
+                {
+                  "id": "218",
+                  "value": "30",
+                  "ParentID": "65",
+                  "methodsNumber": "1",
+                  "name": "ColorSpaceConversionParams"
+                },
+                {
+                  "id": "219",
+                  "value": "34",
+                  "ParentID": "65",
+                  "methodsNumber": "1",
+                  "name": "Screening"
+                },
+                {
+                  "id": "220",
+                  "value": "30",
+                  "ParentID": "65",
+                  "methodsNumber": "1",
+                  "name": "TrappingDetails"
+                }
+              ],
+              "id": "65",
+              "ParentID": "55",
+              "name": "Optional"
+            },
+            {
+              "children": [
+                {
+                  "id": "277",
+                  "value": "63",
+                  "ParentID": "75",
+                  "methodsNumber": "6",
+                  "name": "BindingEdgeMock"
+                },
+                {
+                  "id": "278",
+                  "value": "49",
+                  "ParentID": "75",
+                  "methodsNumber": "4",
+                  "name": "ImpositionMock"
+                },
+                {
+                  "id": "279",
+                  "value": "49",
+                  "ParentID": "75",
+                  "methodsNumber": "4",
+                  "name": "LayoutPreparationMock"
+                },
+                {
+                  "id": "280",
+                  "value": "63",
+                  "ParentID": "75",
+                  "methodsNumber": "6",
+                  "name": "MultipleUpMock"
+                },
+                {
+                  "id": "281",
+                  "value": "63",
+                  "ParentID": "75",
+                  "methodsNumber": "6",
+                  "name": "SameUpMock"
+                },
+                {
+                  "id": "282",
+                  "value": "63",
+                  "ParentID": "75",
+                  "methodsNumber": "6",
+                  "name": "SourceWorkStyleMock"
+                }
+              ],
+              "id": "75",
+              "ParentID": "55",
+              "name": "MockSettings"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "id": "295",
+                      "value": "33",
+                      "ParentID": "77",
+                      "methodsNumber": "1",
+                      "name": "Brand"
+                    },
+                    {
+                      "id": "296",
+                      "value": "32",
+                      "ParentID": "77",
+                      "methodsNumber": "1",
+                      "name": "ColorParam"
+                    },
+                    {
+                      "id": "297",
+                      "value": "33",
+                      "ParentID": "77",
+                      "methodsNumber": "1",
+                      "name": "Diameter"
+                    },
+                    {
+                      "id": "298",
+                      "value": "32",
+                      "ParentID": "77",
+                      "methodsNumber": "1",
+                      "name": "Distance"
+                    },
+                    {
+                      "id": "299",
+                      "value": "33",
+                      "ParentID": "77",
+                      "methodsNumber": "1",
+                      "name": "FlipBackCover"
+                    },
+                    {
+                      "id": "300",
+                      "value": "33",
+                      "ParentID": "77",
+                      "methodsNumber": "1",
+                      "name": "Material"
+                    },
+                    {
+                      "id": "301",
+                      "value": "33",
+                      "ParentID": "77",
+                      "methodsNumber": "1",
+                      "name": "Shape"
+                    },
+                    {
+                      "id": "302",
+                      "value": "32",
+                      "ParentID": "77",
+                      "methodsNumber": "1",
+                      "name": "Thickness"
+                    }
+                  ],
+                  "id": "77",
+                  "ParentID": "76",
+                  "name": "WireCombBindingParamsRes"
+                },
+                {
+                  "children": [
+                    {
+                      "id": "303",
+                      "value": "32",
+                      "ParentID": "78",
+                      "methodsNumber": "1",
+                      "name": "Height"
+                    },
+                    {
+                      "id": "304",
+                      "value": "33",
+                      "ParentID": "78",
+                      "methodsNumber": "1",
+                      "name": "TrimCover"
+                    },
+                    {
+                      "id": "305",
+                      "value": "32",
+                      "ParentID": "78",
+                      "methodsNumber": "1",
+                      "name": "TrimmingOffset"
+                    },
+                    {
+                      "id": "306",
+                      "value": "32",
+                      "ParentID": "78",
+                      "methodsNumber": "1",
+                      "name": "Width"
+                    }
+                  ],
+                  "id": "78",
+                  "ParentID": "76",
+                  "name": "TrimmingParamsRes"
+                },
+                {
+                  "children": [
+                    {
+                      "id": "307",
+                      "value": "32",
+                      "ParentID": "79",
+                      "methodsNumber": "1",
+                      "name": "Angle"
+                    },
+                    {
+                      "id": "308",
+                      "value": "32",
+                      "ParentID": "79",
+                      "methodsNumber": "1",
+                      "name": "NumberOfStitches"
+                    },
+                    {
+                      "id": "309",
+                      "value": "32",
+                      "ParentID": "79",
+                      "methodsNumber": "1",
+                      "name": "Offset"
+                    },
+                    {
+                      "id": "310",
+                      "value": "33",
+                      "ParentID": "79",
+                      "methodsNumber": "1",
+                      "name": "ReferenceEdge"
+                    },
+                    {
+                      "id": "311",
+                      "value": "34",
+                      "ParentID": "79",
+                      "methodsNumber": "1",
+                      "name": "StapleShape"
+                    },
+                    {
+                      "id": "312",
+                      "value": "33",
+                      "ParentID": "79",
+                      "methodsNumber": "1",
+                      "name": "StitchFromFront"
+                    },
+                    {
+                      "id": "313",
+                      "value": "32",
+                      "ParentID": "79",
+                      "methodsNumber": "1",
+                      "name": "StitchPositions"
+                    },
+                    {
+                      "id": "314",
+                      "value": "33",
+                      "ParentID": "79",
+                      "methodsNumber": "1",
+                      "name": "StitchType"
+                    },
+                    {
+                      "id": "315",
+                      "value": "32",
+                      "ParentID": "79",
+                      "methodsNumber": "1",
+                      "name": "StitchWidth"
+                    },
+                    {
+                      "id": "316",
+                      "value": "32",
+                      "ParentID": "79",
+                      "methodsNumber": "1",
+                      "name": "WireBrand"
+                    },
+                    {
+                      "id": "317",
+                      "value": "32",
+                      "ParentID": "79",
+                      "methodsNumber": "1",
+                      "name": "WireGauge"
+                    }
+                  ],
+                  "id": "79",
+                  "ParentID": "76",
+                  "name": "StitchingParamsRes"
+                },
+                {
+                  "children": [
+                    {
+                      "id": "318",
+                      "value": "33",
+                      "ParentID": "80",
+                      "methodsNumber": "1",
+                      "name": "Compensate"
+                    },
+                    {
+                      "id": "319",
+                      "value": "32",
+                      "ParentID": "80",
+                      "methodsNumber": "1",
+                      "name": "LayerAmount"
+                    },
+                    {
+                      "id": "320",
+                      "value": "32",
+                      "ParentID": "80",
+                      "methodsNumber": "1",
+                      "name": "MaxAmount"
+                    },
+                    {
+                      "id": "321",
+                      "value": "32",
+                      "ParentID": "80",
+                      "methodsNumber": "1",
+                      "name": "MaxWeight"
+                    },
+                    {
+                      "id": "322",
+                      "value": "32",
+                      "ParentID": "80",
+                      "methodsNumber": "1",
+                      "name": "MinAmount"
+                    },
+                    {
+                      "id": "323",
+                      "value": "32",
+                      "ParentID": "80",
+                      "methodsNumber": "1",
+                      "name": "UnderLays"
+                    }
+                  ],
+                  "id": "80",
+                  "ParentID": "76",
+                  "name": "StackingParamsRes"
+                },
+                {
+                  "children": [
+                    {
+                      "id": "324",
+                      "value": "33",
+                      "ParentID": "81",
+                      "methodsNumber": "1",
+                      "name": "HorizontalExcess"
+                    },
+                    {
+                      "id": "325",
+                      "value": "32",
+                      "ParentID": "81",
+                      "methodsNumber": "1",
+                      "name": "StripBrand"
+                    },
+                    {
+                      "id": "326",
+                      "value": "32",
+                      "ParentID": "81",
+                      "methodsNumber": "1",
+                      "name": "StripColor"
+                    },
+                    {
+                      "id": "327",
+                      "value": "33",
+                      "ParentID": "81",
+                      "methodsNumber": "1",
+                      "name": "StripLength"
+                    },
+                    {
+                      "id": "328",
+                      "value": "33",
+                      "ParentID": "81",
+                      "methodsNumber": "1",
+                      "name": "StripMaterial"
+                    },
+                    {
+                      "id": "329",
+                      "value": "32",
+                      "ParentID": "81",
+                      "methodsNumber": "1",
+                      "name": "TopExcess"
+                    }
+                  ],
+                  "id": "81",
+                  "ParentID": "76",
+                  "name": "SpineTapingParamsRes"
+                },
+                {
+                  "children": [
+                    {
+                      "id": "330",
+                      "value": "31",
+                      "ParentID": "82",
+                      "methodsNumber": "1",
+                      "name": "Brand"
+                    },
+                    {
+                      "id": "331",
+                      "value": "31",
+                      "ParentID": "82",
+                      "methodsNumber": "1",
+                      "name": "ColorParam"
+                    },
+                    {
+                      "id": "332",
+                      "value": "32",
+                      "ParentID": "82",
+                      "methodsNumber": "1",
+                      "name": "Diameter"
+                    },
+                    {
+                      "id": "333",
+                      "value": "38",
+                      "ParentID": "82",
+                      "methodsNumber": "2",
+                      "name": "Shape"
+                    },
+                    {
+                      "id": "334",
+                      "value": "32",
+                      "ParentID": "82",
+                      "methodsNumber": "1",
+                      "name": "Thickness"
+                    }
+                  ],
+                  "id": "82",
+                  "ParentID": "76",
+                  "name": "PlasticCombBindingParamsRes"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "id": "344",
+                          "value": "31",
+                          "ParentID": "84",
+                          "methodsNumber": "1",
+                          "name": "Center"
+                        },
+                        {
+                          "id": "345",
+                          "value": "31",
+                          "ParentID": "84",
+                          "methodsNumber": "1",
+                          "name": "Extent"
+                        },
+                        {
+                          "id": "346",
+                          "value": "32",
+                          "ParentID": "84",
+                          "methodsNumber": "1",
+                          "name": "Shape"
+                        }
+                      ],
+                      "id": "84",
+                      "ParentID": "83",
+                      "name": "HoleRes"
+                    },
+                    {
+                      "children": [
+                        {
+                          "id": "347",
+                          "value": "31",
+                          "ParentID": "85",
+                          "methodsNumber": "1",
+                          "name": "Pitch"
+                        }
+                      ],
+                      "id": "85",
+                      "ParentID": "83",
+                      "name": "HoleLineRes"
+                    },
+                    {
+                      "id": "335",
+                      "value": "31",
+                      "ParentID": "83",
+                      "methodsNumber": "1",
+                      "name": "Center"
+                    },
+                    {
+                      "id": "336",
+                      "value": "32",
+                      "ParentID": "83",
+                      "methodsNumber": "1",
+                      "name": "CenterReference"
+                    },
+                    {
+                      "id": "337",
+                      "value": "31",
+                      "ParentID": "83",
+                      "methodsNumber": "1",
+                      "name": "Extent"
+                    },
+                    {
+                      "id": "338",
+                      "value": "30",
+                      "ParentID": "83",
+                      "methodsNumber": "1",
+                      "name": "Hole"
+                    },
+                    {
+                      "id": "339",
+                      "value": "31",
+                      "ParentID": "83",
+                      "methodsNumber": "1",
+                      "name": "HoleCount"
+                    },
+                    {
+                      "id": "340",
+                      "value": "31",
+                      "ParentID": "83",
+                      "methodsNumber": "1",
+                      "name": "HoleLine"
+                    },
+                    {
+                      "id": "341",
+                      "value": "32",
+                      "ParentID": "83",
+                      "methodsNumber": "1",
+                      "name": "HoleReferenceEdge"
+                    },
+                    {
+                      "id": "342",
+                      "value": "32",
+                      "ParentID": "83",
+                      "methodsNumber": "1",
+                      "name": "HoleType"
+                    },
+                    {
+                      "id": "343",
+                      "value": "32",
+                      "ParentID": "83",
+                      "methodsNumber": "1",
+                      "name": "Shape"
+                    }
+                  ],
+                  "id": "83",
+                  "ParentID": "76",
+                  "name": "HoleMakingParamsRes"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "id": "350",
+                          "value": "32",
+                          "ParentID": "87",
+                          "methodsNumber": "1",
+                          "name": "GlueApplication"
+                        },
+                        {
+                          "id": "351",
+                          "value": "32",
+                          "ParentID": "87",
+                          "methodsNumber": "1",
+                          "name": "WorkingDirection"
+                        }
+                      ],
+                      "id": "87",
+                      "ParentID": "86",
+                      "name": "GlueRes"
+                    },
+                    {
+                      "id": "348",
+                      "value": "31",
+                      "ParentID": "86",
+                      "methodsNumber": "1",
+                      "name": "Glue"
+                    },
+                    {
+                      "id": "349",
+                      "value": "31",
+                      "ParentID": "86",
+                      "methodsNumber": "1",
+                      "name": "GluingProductionID"
+                    }
+                  ],
+                  "id": "86",
+                  "ParentID": "76",
+                  "name": "GluingParamsRes"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "id": "353",
+                          "value": "31",
+                          "ParentID": "89",
+                          "methodsNumber": "1",
+                          "name": "Number"
+                        },
+                        {
+                          "id": "354",
+                          "value": "31",
+                          "ParentID": "89",
+                          "methodsNumber": "1",
+                          "name": "Offset"
+                        },
+                        {
+                          "id": "355",
+                          "value": "31",
+                          "ParentID": "89",
+                          "methodsNumber": "1",
+                          "name": "OffsetAmount"
+                        },
+                        {
+                          "id": "356",
+                          "value": "32",
+                          "ParentID": "89",
+                          "methodsNumber": "1",
+                          "name": "OffsetDirection"
+                        },
+                        {
+                          "id": "357",
+                          "value": "31",
+                          "ParentID": "89",
+                          "methodsNumber": "1",
+                          "name": "Overfold"
+                        }
+                      ],
+                      "id": "89",
+                      "ParentID": "88",
+                      "name": "DisjointingRes"
+                    },
+                    {
+                      "id": "352",
+                      "value": "31",
+                      "ParentID": "88",
+                      "methodsNumber": "1",
+                      "name": "Disjointing"
+                    }
+                  ],
+                  "id": "88",
+                  "ParentID": "76",
+                  "name": "GatheringParamsRes"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "id": "364",
+                          "value": "32",
+                          "ParentID": "91",
+                          "methodsNumber": "1",
+                          "name": "From"
+                        },
+                        {
+                          "id": "365",
+                          "value": "31",
+                          "ParentID": "91",
+                          "methodsNumber": "1",
+                          "name": "RelativeTravel"
+                        },
+                        {
+                          "id": "366",
+                          "value": "32",
+                          "ParentID": "91",
+                          "methodsNumber": "1",
+                          "name": "To"
+                        },
+                        {
+                          "id": "367",
+                          "value": "32",
+                          "ParentID": "91",
+                          "methodsNumber": "1",
+                          "name": "Travel"
+                        }
+                      ],
+                      "id": "91",
+                      "ParentID": "90",
+                      "name": "FoldRes"
+                    },
+                    {
+                      "id": "358",
+                      "value": "32",
+                      "ParentID": "90",
+                      "methodsNumber": "1",
+                      "name": "DescriptionType"
+                    },
+                    {
+                      "id": "359",
+                      "value": "32",
+                      "ParentID": "90",
+                      "methodsNumber": "1",
+                      "name": "Fold"
+                    },
+                    {
+                      "id": "360",
+                      "value": "31",
+                      "ParentID": "90",
+                      "methodsNumber": "1",
+                      "name": "FoldCatalog"
+                    },
+                    {
+                      "id": "361",
+                      "value": "31",
+                      "ParentID": "90",
+                      "methodsNumber": "1",
+                      "name": "FoldSheetIn"
+                    },
+                    {
+                      "id": "362",
+                      "value": "32",
+                      "ParentID": "90",
+                      "methodsNumber": "1",
+                      "name": "NoOp"
+                    },
+                    {
+                      "id": "363",
+                      "value": "32",
+                      "ParentID": "90",
+                      "methodsNumber": "1",
+                      "name": "SheetLay"
+                    }
+                  ],
+                  "id": "90",
+                  "ParentID": "76",
+                  "name": "FoldingParamsRes"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "id": "370",
+                          "value": "31",
+                          "ParentID": "93",
+                          "methodsNumber": "1",
+                          "name": "Offset"
+                        },
+                        {
+                          "id": "371",
+                          "value": "32",
+                          "ParentID": "93",
+                          "methodsNumber": "1",
+                          "name": "Side"
+                        }
+                      ],
+                      "id": "93",
+                      "ParentID": "92",
+                      "name": "ScoreRes"
+                    },
+                    {
+                      "id": "368",
+                      "value": "31",
+                      "ParentID": "92",
+                      "methodsNumber": "1",
+                      "name": "CoverOffset"
+                    },
+                    {
+                      "id": "369",
+                      "value": "31",
+                      "ParentID": "92",
+                      "methodsNumber": "1",
+                      "name": "Score"
+                    }
+                  ],
+                  "id": "92",
+                  "ParentID": "76",
+                  "name": "CoverApplicationParamsRes"
+                },
+                {
+                  "id": "283",
+                  "value": "32",
+                  "ParentID": "76",
+                  "methodsNumber": "1",
+                  "name": "Assembly"
+                },
+                {
+                  "id": "284",
+                  "value": "34",
+                  "ParentID": "76",
+                  "methodsNumber": "1",
+                  "name": "CoverApplicationParams"
+                },
+                {
+                  "id": "285",
+                  "value": "31",
+                  "ParentID": "76",
+                  "methodsNumber": "1",
+                  "name": "FoldingParams"
+                },
+                {
+                  "id": "286",
+                  "value": "31",
+                  "ParentID": "76",
+                  "methodsNumber": "1",
+                  "name": "GatheringParams"
+                },
+                {
+                  "id": "287",
+                  "value": "31",
+                  "ParentID": "76",
+                  "methodsNumber": "1",
+                  "name": "GluingParams"
+                },
+                {
+                  "id": "288",
+                  "value": "31",
+                  "ParentID": "76",
+                  "methodsNumber": "1",
+                  "name": "HoleMakingParams"
+                },
+                {
+                  "id": "289",
+                  "value": "31",
+                  "ParentID": "76",
+                  "methodsNumber": "1",
+                  "name": "PlasticCombBindingParams"
+                },
+                {
+                  "id": "290",
+                  "value": "32",
+                  "ParentID": "76",
+                  "methodsNumber": "1",
+                  "name": "SpineTapingParams"
+                },
+                {
+                  "id": "291",
+                  "value": "32",
+                  "ParentID": "76",
+                  "methodsNumber": "1",
+                  "name": "StackingParams"
+                },
+                {
+                  "id": "292",
+                  "value": "31",
+                  "ParentID": "76",
+                  "methodsNumber": "1",
+                  "name": "StitchingParams"
+                },
+                {
+                  "id": "293",
+                  "value": "31",
+                  "ParentID": "76",
+                  "methodsNumber": "1",
+                  "name": "TrimmingParams"
+                },
+                {
+                  "id": "294",
+                  "value": "31",
+                  "ParentID": "76",
+                  "methodsNumber": "1",
+                  "name": "WireCombBindingParams"
+                }
+              ],
+              "id": "76",
+              "ParentID": "55",
+              "name": "Finishing"
+            },
+            {
+              "id": "133",
+              "value": "41",
+              "ParentID": "55",
+              "methodsNumber": "2",
+              "name": "DataModel"
+            },
+            {
+              "id": "134",
+              "value": "48",
+              "ParentID": "55",
+              "methodsNumber": "3",
+              "name": "DataModelMock"
+            },
+            {
+              "id": "135",
+              "value": "53",
+              "ParentID": "55",
+              "methodsNumber": "6",
+              "name": "ISettings"
+            },
+            {
+              "id": "136",
+              "value": "55",
+              "ParentID": "55",
+              "methodsNumber": "8",
+              "name": "ISettingsMock"
+            },
+            {
+              "id": "137",
+              "value": "33",
+              "ParentID": "55",
+              "methodsNumber": "46",
+              "name": "RunList"
+            },
+            {
+              "id": "138",
+              "value": "15",
+              "ParentID": "55",
+              "methodsNumber": "0",
+              "name": "SettingType"
+            }
+          ],
+          "id": "55",
+          "ParentID": "46",
+          "name": "TicketDataModel"
+        },
+        {
+          "id": "94",
+          "value": "14",
+          "ParentID": "46",
+          "methodsNumber": "1",
+          "name": "LogHelper"
+        }
+      ],
+      "id": "46",
+      "ParentID": "45",
+      "name": "Generator"
+    }]
+}

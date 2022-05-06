@@ -1,10 +1,17 @@
 import './App.css';
-import React, {useEffect} from 'react'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import React from 'react'
+import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 import Home from './pages/index';
 import Signup from './pages/signup';
 import './fonts/Gilmer-Font/GilmerRegular.otf';
 import { initializeApp } from "firebase/app";
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from "firebase/firestore";
+import MainPage from './pages/mainPage';
+import DiagramPage from './pages/diagramPage';
+import Registration from './pages/registration';
+import Login from './pages/login';
+import CreateDiagram from './pages/createDiagram';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAiIcMgbswZMZ8up2cQi-JtO7TtkhmDIXQ",
@@ -16,19 +23,25 @@ export const firebaseConfig = {
   appId: "1:933304960587:web:2ca563fefbf89aab956fce"
 };
 
+export const app = initializeApp(firebaseConfig);
+export const auth = getAuth();
+export const db = getFirestore(app);
+export const create = false;
+
 
 export default class App extends React.Component {
-
-  async componentDidMount(){
-    initializeApp(firebaseConfig);
-  }
 
   render(){
     return (
       <Router>
           <Routes>
-            <Route exact path="/" element={<Home/>}/>
-            <Route exact path="/signup" element={<Signup/>}/>
+            <Route exact path="/home" element={<Home/>}/>
+            <Route exact path="/signup" element={<Registration/>}/>
+            <Route exact path="/signin" element={<Login/>}/>
+            <Route exact path="/mainpage" element={<MainPage/>}/>
+            <Route exact path="/diagramPage" element={<DiagramPage/>}/>
+            <Route exact path="/createDiagram" element={<CreateDiagram/>}>
+            </Route>
           </Routes>
       </Router>
     );
