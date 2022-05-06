@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import {NavLink} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 
 export const Container = styled.div`
     background-color: #fff;
-    min-height: 692px;
+    min-height: 600px;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -13,6 +14,7 @@ export const Container = styled.div`
     overflow: hidden;
     align-items: center;
     justify-content: center;
+
 `
 
 export const FormWrap = styled.div`
@@ -20,20 +22,16 @@ export const FormWrap = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    @media screen and (max-width: 400px){
-        height: 80%;
-    }
 `
 
 export const IconWrap = styled.div`
-   margin-top: 5vh;
    margin-left: -1.5vh;
+   margin-top: 5vh;
 `
 
 export const Icon = styled(Link)`
-    margin-top: 32px;
     margin-left: 10vh;
+    margin-top: 10vh;
     text-decoration: none;
     color: #000;
     font-weight: 700;
@@ -54,7 +52,29 @@ export const FormContent = styled.div`
     width: 100%;
 
     @media screen and (max-width: 400px){
-        padding: 10px;
+        padding: 0px;
+    }
+`
+
+export const FormMobileSection = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: transparent;
+    width: 100%;
+`
+
+export const FormMobile = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: transparent;
+    width: 95%;
+    padding: 7px 7px;
+    margin: auto;
+
+    @media screen and (max-width: 400px){
+        padding: 0px;
     }
 `
 
@@ -75,7 +95,7 @@ export const Form = styled.form`
 `
 
 export const FormH1 = styled.h1`
-    margin-bottom: 40px;
+    margin-top: 25px;
     color: #000;
     font-size: 20px;
     font-weight: 400;
@@ -84,34 +104,55 @@ export const FormH1 = styled.h1`
 `
 
 export const FormLabel = styled.label`
-    margin-bottom: 8px;
-    font-size: 15px;
+    margin-bottom: 3px;
+    width: 85%;
+    font-size: 11px;
     font-weight: bold;
     color: #000;
-`
+    margin: auto;
+    `
 
 export const FormInput = styled.input`
-    padding: 16px 16px;
-    margin-bottom: 32px;
-    border: none;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.9);
+    width: 85%;
+    padding: 7px 7px;
+    margin: auto;
+    margin-bottom: 15px;
+    border: 0;
+    background-color: transparent;
+    border-bottom: 2px solid #9b9b9b;
+    box-shadow: none;
+    outline: none;
+    //box-shadow: 0 1px 3px rgba(0,0,0,0.9);
+`
+
+export const FormSelect = styled.select`
+    width: 85%;
+    padding: 7px 7px;
+    margin: auto;
+    margin-bottom: 15px;
+    border: 0;
+    background-color: transparent;
+    border-bottom: 2px solid #9b9b9b;
+    box-shadow: none;
+    outline: none;
 `
 
 export const FormButton = styled.button`
-    background: #fff;
+    background: #bfbdc1;
+    width: 50%;
     font-weight: bold;
-    padding: 16px 0;
+    padding: 7px 0;
     border: none;
     border-radius: 4px;
     color: #000;
-    font-size: 20px;
+    font-size: 15px;
     cursor: pointer;
+    margin: auto;
 `
 
 export const Text = styled(Link)`
     text-align: center;
-    margin-top: 24px;
+    margin-top: 15px;
     color: #000;
     font-size: 14px;
     font-weight: bold;
@@ -148,6 +189,60 @@ export const Column2 = styled.div`
 `;
 
 export const ImgWrap = styled.div`
-    max-width: 555px;
+    max-width: 355px;
     height: 100%;
 `;
+
+export const SignUpContainer = styled.div`
+    background-color: #fff;
+    min-height: 600px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 0;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+
+`
+
+export const SignupContent = styled.div`
+    width: 60%;
+    height: 80vh;
+    margin: auto;
+    background-color: #bfbdc1;
+    box-shadow: 10px 5px 5px #888888;
+`
+
+export const SignupForm = styled.div`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`
+
+export const RegisterForm = styled.div`
+    width: 90%;
+    height: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #fff;
+`
+
+export const ImgWrapper = styled.div`
+    max-width: 355px;
+    height: 100%;
+`;
+
+export const FormGroup = styled.div`
+    margin-top: 1.25%;
+    height: 95%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`

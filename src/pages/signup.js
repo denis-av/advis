@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {ReactComponent as YourSvg} from '../images/undraw_sign_in_re_o58h.svg';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Container, FormButton, FormContent, FormH1, FormInput, FormLabel, FormWrap, Icon, Form, Text, InfoRow, Column1, Column2, ImgWrap, IconWrap } from '../components/Signup/SignupElements'
-import { getAuth } from 'firebase/auth';
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from '../App';
+import { auth } from '../App';
 
 
 export default class Signup extends React.Component{
@@ -24,13 +22,13 @@ export default class Signup extends React.Component{
         this.CreateAccount = this.CreateAccount.bind(this);
     }
 
-    async componentDidMount(){
-        initializeApp(firebaseConfig);
+    componentDidMount(){
+        console.log(auth);
     }
 
     handleEmail(event) {
         this.setState({email: event.target.value});
-      }
+    }
     
     handlePassword(event) {
         this.setState({password: event.target.value});
@@ -40,32 +38,37 @@ export default class Signup extends React.Component{
         this.setState({passwordConfirmed: event.target.value});
       }
 
-    CreateAccount = () => {
-        const auth = getAuth();
-        createUserWithEmailAndPassword(auth, this.state.email, this.state.password)
-        .then(() => {
-            this.setState({email: ''});
-            this.setState({password: ''});
-            this.setState({passwordConfirmed: ''});
-            this.setState({textError: "Cont creat cu succes!"});
-        })
-        .catch((error) => {
-            console.log(error.message)
-            switch (error.code){
-                case "auth/email-already-in-use":
-                    this.setState({textError: "Exista deja un user cu acest email!"});
-                    break;
-                case "auth/invalid-email":
-                    this.setState({textError: "Email invalid!"});
-                    break;
-                case "auth/weak-password":
-                    this.setState({textError: "Parola este prea slaba!"});
-                    break;
-            };
-            this.setState({email: ""});
-            this.setState({password: ""});
-            this.setState({passwordConfirmed: ""});
-        });
+    CreateAccount(e) {
+        e.preventDefault();
+        if(this.state.password === this.state.passwordConfirmed){
+            createUserWithEmailAndPassword(auth, this.state.email, this.state.password)
+            .then(() => {
+                this.setState({email: ''});
+                this.setState({password: ''});
+                this.setState({passwordConfirmed: ''});
+                this.setState({textError: "Cont creat cu succes!"});
+            })
+            .catch((error) => {
+                console.log(error.message);
+                switch (error.code){
+                    case "auth/email-already-in-use":
+                        this.setState({textError: "Exista deja un user cu acest email!"});
+                        break;
+                    case "auth/invalid-email":
+                        this.setState({textError: "Email invalid!"});
+                        break;
+                    case "auth/weak-password":
+                        this.setState({textError: "Parola este prea slaba!"});
+                        break;
+                };
+                this.setState({email: ""});
+                this.setState({password: ""});
+                this.setState({passwordConfirmed: ""});
+            });
+        }else{
+            this.setState({textError: "Parolele trebuie să coincidă!"});
+        }
+        
     }
 
     render(){
@@ -92,7 +95,7 @@ export default class Signup extends React.Component{
                                         <FormInput type='password'value={this.state.password} onChange={this.handlePassword}/>
                                         <FormLabel htmlFor='for'>Confirmă parola</FormLabel>
                                         <FormInput type='password' value={this.state.passwordConfirmed} onChange={this.handleConfirmedPassword}/>
-                                        <FormButton type='submit' onClick={this.CreateAccount}>Crează cont</FormButton>
+                                        <FormButton onClick={this.CreateAccount}>Crează cont</FormButton>
                                         <Text to="/">Deja am cont!</Text>
                                         <FormLabel htmlFor='for' style={{color:"#ffffff", fontWeight: "normal", textAlign: "center"}}>{this.state.textError}</FormLabel>
                                     </Form>
