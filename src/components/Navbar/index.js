@@ -9,7 +9,7 @@ export default class Navbar extends React.Component {
       <>
       <Nav>
         <NavbarContainer>
-          <NavLogo to='/'>advis</NavLogo>
+          <NavLogo to='/home'>advis</NavLogo>
           <MobileIcon onClick={this.props.toggle}>
               <FaBars />
           </MobileIcon>
@@ -25,7 +25,7 @@ export default class Navbar extends React.Component {
               </NavItem>
           </NavMenu>
           <NavBtn>
-              <NavBtnLink to='/signup'>Login</NavBtnLink>
+              <NavBtnLink to='/signin'>Login</NavBtnLink>
           </NavBtn>
         </NavbarContainer>
       </Nav>
