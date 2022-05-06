@@ -31,8 +31,7 @@ export default class Footer extends React.Component{
                                 <SocialLogo to='/'>
                                     advis
                                 </SocialLogo>
-                                <WebsiteRightss>advi
-                                    s © {new Date().getFullYear()} All rights reserved.</WebsiteRightss>
+                                <WebsiteRightss>advis © {new Date().getFullYear()} All rights reserved.</WebsiteRightss>
                                 <SocialIcons>
                                     <SocialIconLink href="//www.facebook.com" target="_blank" aria-label="Facebook"><FaFacebook /></SocialIconLink>
                                     <SocialIconLink href="//www.instagram.com" target="_blank" aria-label="Instagram"><FaInstagram /></SocialIconLink>
