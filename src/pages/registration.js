@@ -3,15 +3,28 @@ import { useEffect, useState } from 'react';
 import {ReactComponent as YourSvg} from '../images/undraw_sign_in_re_o58h.svg';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from '../App';
-import { SignUpContainer,SignupForm, IconWrap, Icon,RegisterForm,ImgWrapper,FormMobileSection, FormMobile,FormButton, Text, FormGroup,FormSelect, FormInput, FormLabel, FormH1, SignupContent } from '../components/Signup/SignupElements';
+import { SignUpContainer,SignupForm, IconWrap, Icon,RegisterForm,ImgWrapper,FormMobileSection, FormMobile,FormButton, Text, FormGroup,FormSelect, FormInput, FormLabel, FormH1, SignupContent, BigContainer } from '../components/Signup/SignupElements';
 import { doc, setDoc } from "firebase/firestore"; 
 import { useNavigate } from 'react-router-dom';
+
+import {
+    CircleImage, 
+    CircleGroup, 
+    FullCircle, 
+    FullCircle3, 
+    EmptyCircle, 
+    CircleGroup2,
+    FullCircle4, 
+    FullCircle2, 
+
+} from '../components/DiagramForm/DiagramFormElements';
 
 function Registration(){
 
     let navigate = useNavigate();
 
-    const [name, setName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [firstNname, setFirstName] = useState("");
     const [mobile, setMobile] = useState("");
     const [occupation, setOccupation] = useState("");
     const [email, setEmail] = useState("");
@@ -19,8 +32,12 @@ function Registration(){
     const [passwordConfirmed, setPasswordConfirmed] = useState("");
     const [textError, setTextError] = useState("");
 
-    const handleName = event =>{
-        setName(event.target.value);
+    const handleLastName = event =>{
+        setLastName(event.target.value);
+    }
+
+    const handleFirstName = event =>{
+        setFirstName(event.target.value);
     }
 
     const handleMobile = event =>{
@@ -48,7 +65,8 @@ function Registration(){
                 createUserWithEmailAndPassword(auth, email, password)
                 .then(async () => {
                     const docData = {
-                        name: name,
+                        lastName: lastName,
+                        firstName: firstNname,
                         mobile: mobile,
                         occupation: occupation,
                         email: email
@@ -56,7 +74,8 @@ function Registration(){
                     const user = email.substring(0,email.indexOf("@"));
                     console.log(user);
                     await setDoc(doc(db, "users", user), docData);
-                    setName("");
+                    setLastName("");
+                    setFirstName("");
                     setMobile("");
                     setOccupation("");
                     setEmail("");
@@ -78,7 +97,8 @@ function Registration(){
                             setTextError("Parola este prea slaba!");
                             break;
                     };
-                    setName("");
+                    setLastName("");
+                    setFirstName("");
                     setMobile("");
                     setOccupation("");
                     setEmail("");
@@ -95,13 +115,35 @@ function Registration(){
                     <IconWrap>
                         <Icon to="/home">advis</Icon>
                     </IconWrap>
+                    <BigContainer>
+                    <CircleImage>
+                        <CircleGroup>
+                            <FullCircle />  
+                            <FullCircle3 />  
+                            <EmptyCircle />  
+                        </CircleGroup>
+                        <CircleGroup2>
+                            <FullCircle4 />  
+                            <FullCircle2 />
+                        </CircleGroup2>
+                    </CircleImage>
                     <SignupContent>
                         <SignupForm>
                             <FormH1>Înregistrează-te acum!</FormH1>
                             <RegisterForm>
                                 <FormGroup>
-                                    <FormLabel htmlFor='for'>Nume</FormLabel>
-                                    <FormInput type="text" value={name} onChange={handleName} placeholder="Nume Prenume" required />
+                                    {/* <FormLabel htmlFor='for'>Nume</FormLabel>
+                                    <FormInput type="text" value={name} onChange={handleName} placeholder="Nume Prenume" required /> */}
+                                    <FormMobile>
+                                        <FormMobileSection>
+                                            <FormLabel htmlFor='for'>Nume</FormLabel>
+                                            <FormInput type="text" value={lastName} onChange={handleLastName} placeholder="Nume" required />
+                                        </FormMobileSection>
+                                        <FormMobileSection>
+                                        <FormLabel htmlFor='for'>Prenume</FormLabel>
+                                            <FormInput type="text" value={firstNname} onChange={handleFirstName} placeholder="Prenume" required />
+                                        </FormMobileSection>
+                                    </FormMobile>
                                     <FormMobile>
                                         <FormMobileSection>
                                             <FormLabel htmlFor='for'>Tara</FormLabel>
@@ -352,6 +394,7 @@ function Registration(){
                             </RegisterForm>
                         </SignupForm>
                     </SignupContent>
+                    </BigContainer>
                 </SignUpContainer>
             </>
           )

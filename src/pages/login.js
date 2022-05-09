@@ -26,34 +26,32 @@ function Login() {
 
 
     async function LoginUser(e) {
-        const user = email.substring(0,email.indexOf("@"));
+        signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+            const user = email.substring(0,email.indexOf("@"));
+            navigate("/mainPage");
             localStorage.setItem('user', user);
-        // signInWithEmailAndPassword(auth, email, password)
-        // .then(() => {
-        //     const user = email.substring(0,email.indexOf("@"));
-        //     navigate("/mainPage");
-        //     sessionStorage.setItem('user', user);
-        // })
-        // .catch((error) => {
-        //     console.log(error.message);
-        //     switch (error.code){
-        //         case "auth/invalid-email":
-        //             setTextError("Email invalid!");
-        //             break;
-        //         case "auth/wrong-password":
-        //             setTextError("Parola incorecta!");
-        //             break;
-        //         case "auth/user-not-found":
-        //             setTextError("Contul nu a fost gasit!");
-        //             break;
-        //     };
-        //     setEmail("");
-        //     setPassword("");
-        // });       
+        })
+        .catch((error) => {
+            console.log(error.message);
+            switch (error.code){
+                case "auth/invalid-email":
+                    setTextError("Email invalid!");
+                    break;
+                case "auth/wrong-password":
+                    setTextError("Parola incorecta!");
+                    break;
+                case "auth/user-not-found":
+                    setTextError("Contul nu a fost gasit!");
+                    break;
+            };
+            setEmail("");
+            setPassword("");
+        });       
     }
         return (
             <>
-            <SignInContainer style ={{ backgroundImage: 'url('+ require('../images/pexels-lukas-669614.jpg') + ')',
+            <SignInContainer style ={{ backgroundImage: 'url('+ require('../images/login_back.jpg') + ')',
                                                             backgroundPosition: 'center',
                                                             backgroundSize: 'cover',
                                                             backgroundRepeat: 'no-repeat'}}>
