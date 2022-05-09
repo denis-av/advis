@@ -44,7 +44,7 @@ function DiagramForm() {
 
      useEffect(async ()=>{
         //user
-        const user = "avramdenis58";
+        const user = localStorage.getItem('user');
         // preluare date din FireStore
         const q = query(collection(db, user));
         const querySnapshot = await getDocs(q);
@@ -100,7 +100,7 @@ function DiagramForm() {
         if(newProject  === true){
             //construire obiect
             const docData = {
-                diagramType: diagramType,
+                //diagramType: diagramType,
                 jsonContent: fileContent
             }
             const map = new Map();
@@ -118,7 +118,7 @@ function DiagramForm() {
         }else{
             //construire obiect
             const docData = {
-                diagramType: diagramType,
+                //diagramType: diagramType,
                 jsonContent: fileContent
             }
             const map = new Map();
@@ -175,14 +175,14 @@ function DiagramForm() {
                                     <FormInput type="text" value={projectName} onChange={handleProjectName} required/>
 
                                 }
-                                <FormLabel htmlFor="for">Tipul diagramei create</FormLabel>
+                                {/* <FormLabel htmlFor="for">Tipul diagramei create</FormLabel>
                                 <FormSelect type="text" value={diagramType} onChange={handleDiagramType} required>
                                             <option value="default">Selecteaza</option>
                                             <option value="TreemapStatic">Treemap static</option>
                                             <option value="TreemapZoomable">Treemap zoomable</option>
                                             <option value="BubbleChart">BubbleChart</option>
                                             <option value="CollapsibleTree">CollapsibleTree</option>
-                                </FormSelect>
+                                </FormSelect> */}
                                 <FormLabel htmlFor="for">Numele diagramei</FormLabel>
                                 <FormInput type="text" value={diagramName} onChange={handleDiagramName} required/>
                                 <FormLabel htmlFor="for">Fișier JSON</FormLabel>
