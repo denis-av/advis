@@ -3,7 +3,6 @@ import NavbarUser from '../components/Navbar_user';
 import SidebarUser from '../components/Sidebar-user';
 import Footer from '../components/Footer'
 import Treemap from './staticTreemap';
-import "./style_static.css"
 import DiagramForm from '../components/DiagramForm';
 
 

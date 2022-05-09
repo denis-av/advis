@@ -1,18 +1,35 @@
 import { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
+import { DiagramWrap, Heading, TextArea, Subtitle,TopLine } from '../components/Diagram/DiagramElements'
+import styled from 'styled-components';
 
-export default function Treemap({width, height }) {
+const Wrapp = styled.div`
+    //style={{ maxWidth:"1200px", alignContent:"center", justifyContent:"center", marginLeft:"10%", marginTop:"3%", maxHeight:"750px"}}
+    /* align-content: center;
+    justify-content: center;
+    margin-left: 0%;
+    margin-top: 3%; */
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 3%;
+`
+
+export default function Treemap({width, height}) {
   const data = JSON.parse(localStorage.getItem('data'));
   console.log(data);
   const svgRef = useRef(null);
   const legendRef = useRef(null);
-  var margin = {top: 30, right:0, bottom: 20, left:20},
+  var margin = {top: 30, right:100, bottom:0, left: 100},
              width = width,
              //width = 1000,
              height = height,
              // height = 600 - margin.top - margin.bottom,
              formatNumber = d3.format(","),
              transitioning;
+             
 
     var x = d3.scaleLinear().domain([0,width]).range([0,width]);
     var y = d3.scaleLinear().domain([0, height]).range([0, height]);
@@ -20,12 +37,12 @@ export default function Treemap({width, height }) {
     var leaves = [];
 
     function renderTreemap() {
-        const svg = d3.select(svgRef.current).attr("width", width + margin.left)
-                                            .attr("height", height + margin.top + margin.bottom)
+        const svg = d3.select(svgRef.current).attr("width", width + 100)
+                                            .attr("height", height + 100)
                                             // .style("margin-left", -margin.left + "px")
                                             // .style("margin-right", -margin.right + "px")
                                             .append("g")
-                                            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+                                            //.attr("transform", "translate(100,100)")
                                             //.style("shape-rendering", "crispEdges");
 
         var pathsWithColor = [];
@@ -37,8 +54,8 @@ export default function Treemap({width, height }) {
         // create root node
         const root = d3
         .hierarchy(data)
-        .sum(function (d) {return d.codeSizeMax;})
-        .sort(function (a, b) {return b.height - a.height || b.codeSizeMax - a.codeSizeMax});
+        .sum(function (d) {return d.value;})
+        .sort(function (a, b) {return b.height - a.height || b.value - a.value});
         
         generateColorForEachPath(root);
 
@@ -66,7 +83,7 @@ export default function Treemap({width, height }) {
                 tool.style("left", event.pageX + 10 + "px")
                 tool.style("top", event.pageY - 20 + "px")
                 tool.style("display", "inline-block");
-                tool.html(d.children ? null : "<b>" + generateParentName(d) + "<br>" + d.data.name  + "<br>" +  d.data.value+ ' lines' + "</b>");
+                tool.html(d.children ? null : "<b>" + generateParentName(d) + "<br>" + d.data.name  + "<br>" +  d.data.value + "</b>");
             }).on("mouseout", function (d) {
                 tool.style("display", "none");
             });
@@ -82,26 +99,41 @@ export default function Treemap({width, height }) {
     nodes.append("text")
         .attr("clip-path", function(d) { return "url(#clip-" + d.data.id + ")"; })
       .selectAll("tspan")
-      .data(function(d) { return d.data.name.split(/\n/g); })
+      .data(function(d) { return (d.data.name + "\n" + d.data.value).split(/\n/g); })
       .join("tspan")
         .attr("x", 3)
         .attr("y", (d, i, D) => `${(i === D.length - 1) * 0.3 + 1.1 + i * 0.9}em`)
         .attr('font-size', `${fontSize}px`)
         .attr("font-weight","bold")
+        .attr("style","@media only screen and (max-width: 960px)  {font-size: 9px}")
         .text(d => d);   
-  
-        // add text to rects
-        // nodes.append('text')
-        //         .text((d) => `${d.data.name} ${d.data.value}`)
-        //         .attr('width', (d) => d.x1 - d.x0)
-        //         .attr('height', (d) => d.y1 - d.y0)
-        //         .attr('font-size', `${fontSize}px`)
-        //         .attr('x', 3)
-        //         .attr('y', fontSize)
-        //         .attr("overflow","hidden")
-        //         .call(wrapText);
 
+        let categories = pathsWithColor;
+        const legendContainer = d3.select(legendRef.current);
+        legendContainer.attr('width', width).attr('height', categories.length * 34);
 
+        console.log(categories);
+
+        categories = categories.filter(
+        (category, index, self) => self.indexOf(category) === index,
+        );
+
+        const legend = legendContainer.selectAll('g').data(categories).join('g');
+
+        legend.append('rect')
+            .attr('width', "17px")
+            .attr('height', "17px")
+            .attr('x', "17")
+            .attr('y', (_, i) => 17 * 2 * i)
+            .attr('fill', (d) => d.color);
+
+        legend.append('text')
+        .attr('transform', `translate(0, 13)`)
+        .attr('x', 17 * 3)
+        .attr('y', (_, i) => 17 * 2 * i)
+        .style('font-size', "15px")
+        .style("color","#ffffff")
+        .text((d) => d.path);
 
         function identifyColor(d){
             let color = "";
@@ -222,10 +254,30 @@ export default function Treemap({width, height }) {
     renderTreemap();
   }, []);
 
+  const handleDiagramType = () => {
+    const value = localStorage.getItem("type");
+    if(value === "treemapStatic") return "STATIC TREEMAP";
+    else if(value === "treemapZoomable" ) return "ZOOMABLE TREEMAP";
+        else if(value === "bubbleChart" ) return "BUBBLE CHART";
+            else if(value === "collapsible" ) return "COLLAPSIBLE TREE";
+
+  }
+
   return (
-    <div className="treemap">
-      <svg ref={svgRef} />
-      <svg ref={legendRef} />
-    </div>
+    // <div className="treemap" style={{ maxWidth:"1200px", alignContent:"center", justifyContent:"center", marginLeft:"10%", marginTop:"3%", maxHeight:"750px"}}>
+    //   <svg ref={svgRef} />
+    // </div>
+
+    <Wrapp className="treemap">
+        <DiagramWrap>
+                <svg ref={svgRef} style={{maxWidth:"1100px", maxHeight:"750px", alignContent:"center",justifyContent:"center"}}/>
+                <TextArea style={{ maxHeight:"750px"}}>
+                    <TopLine>{handleDiagramType()}</TopLine>
+                    <Heading lightText={false}>{localStorage.getItem("projectName")}</Heading>
+                    <Subtitle darkText={true}>{localStorage.getItem("documentName")}</Subtitle>
+                </TextArea>
+        </DiagramWrap>
+    <svg ref={legendRef} />
+    </Wrapp>
   );
 }

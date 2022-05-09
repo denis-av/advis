@@ -12,6 +12,7 @@ import DiagramPage from './pages/diagramPage';
 import Registration from './pages/registration';
 import Login from './pages/login';
 import CreateDiagram from './pages/createDiagram';
+import ProjectPage from './pages/projectPage';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAiIcMgbswZMZ8up2cQi-JtO7TtkhmDIXQ",
@@ -40,8 +41,8 @@ export default class App extends React.Component {
             <Route exact path="/signin" element={<Login/>}/>
             <Route exact path="/mainpage" element={<MainPage/>}/>
             <Route exact path="/diagramPage" element={<DiagramPage/>}/>
-            <Route exact path="/createDiagram" element={<CreateDiagram/>}>
-            </Route>
+            <Route exact path="/createDiagram" element={<CreateDiagram/>} />
+            <Route exact path="/projects" element={<ProjectPage/>} />
           </Routes>
       </Router>
     );

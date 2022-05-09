@@ -34,7 +34,6 @@ function MainPage() {
     // },[data])
 
     const transferPage = () => {
-        localStorage.setItem('data', data);
         navigate("/diagramPage");
     }
 

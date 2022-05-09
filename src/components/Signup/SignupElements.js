@@ -193,6 +193,15 @@ export const ImgWrap = styled.div`
     height: 100%;
 `;
 
+export const BigContainer = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+`
+
 export const SignUpContainer = styled.div`
     background-color: #fff;
     min-height: 600px;
@@ -214,6 +223,8 @@ export const SignupContent = styled.div`
     margin: auto;
     background-color: #bfbdc1;
     box-shadow: 10px 5px 5px #888888;
+    margin-top: 2%;
+    margin-left: -3%;
 `
 
 export const SignupForm = styled.div`
@@ -225,7 +236,7 @@ export const SignupForm = styled.div`
 
 export const RegisterForm = styled.div`
     width: 90%;
-    height: 80%;
+    height: 85%;
     margin: auto;
     display: flex;
     flex-direction: row;
