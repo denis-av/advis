@@ -56,7 +56,7 @@ export default class InfoSectionUser extends React.Component {
                         <TextAreaInfo>
                             <TextDiv>
                                 <TopLine>EXPLOREAZĂ DATE FOLOSIND ADVIS</TopLine>
-                                <Heading lightText={false}>Folosește ADVIS pentru a explora și a vizualiza datele tale într-o manieră mult mai prietenuasă vizual
+                                <Heading lightText={false}>Folosește ADVIS pentru a explora și a vizualiza datele tale într-o manieră mult mai prietenoasă vizual
                                 </Heading>
                                 <Subtitle darkText={true}>Folosind ADVIS ai posibilitatea de a crea diagrame bazate pe biblioteca D3, pornind de la fișiere JSON cu o anumita structură care trebuie respectată.</Subtitle>
                                 <Subtitle darkText={true}>Acest site a fost creat pentru a putea crea diagrame de vizualizare pentru proiecte de tip C#, însă datorită faptului că aceste diagrame se construiesc pe baza unor fisier

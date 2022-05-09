@@ -9,17 +9,20 @@ export default class NavbarUser extends React.Component {
       <>
       <Nav>
         <NavbarContainer>
-          <NavLogo to='/mainPage'>advis</NavLogo>
+          <NavLogo>advis</NavLogo>
           <MobileIcon onClick={this.props.toggle}>
               <FaBars />
           </MobileIcon>
           <NavMenu>
-              <NavItem>
-                  <NavLinks to='/diagramPage'>Proiecte</NavLinks>
+            <NavItem>
+                  <NavLinks to='/mainPage'>Home</NavLinks>
               </NavItem>
               <NavItem>
+                  <NavLinks to='/projects'>Proiecte</NavLinks>
+              </NavItem>
+              {/* <NavItem>
                   <NavLinks to='/createDiagram'>Crează</NavLinks>
-              </NavItem>
+              </NavItem> */}
               <NavItem>
                   <NavLinks to=''>Documentatie</NavLinks>
               </NavItem>
