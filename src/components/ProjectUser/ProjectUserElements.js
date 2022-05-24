@@ -121,6 +121,12 @@ export const ButtonWrap = styled.div`
     display: flex;
     align-items: center;
     margin-top: 5%;
+
+    @media screen and (max-width:1600px){
+        font-size: 13px;
+    }
+
+
 `
 
 export const Settings = styled.div`
@@ -244,6 +250,10 @@ export const BtnText = styled.button`
     margin: auto;
     transition: 0.5s;
     border-radius: 5px;
+
+    @media screen and (max-width:1600px){
+        font-size: 10px;
+    }
 `
 
 export const ProjectsWrapp = styled.div`
@@ -263,8 +273,8 @@ export const HeadingTitle = styled.h1`
     font-weight: 600;
     color: ${({ lightText}) => lightText ? '#f7f8fa' :'#010606'};
 
-    @media screen and (max-width: 480px){
-        font-size: 32px;
+    @media screen and (max-width: 1600px){
+        font-size: 15px;
     }
 `;
 

@@ -13,8 +13,7 @@ export default class Footer extends React.Component{
                             <FooterLinkWrapper>
                                 <FooterLinkItems>
                                     <FooterLinkTitle>Contact</FooterLinkTitle>
-                                    <FooterLink to="/">Contact</FooterLink>
-                                    <FooterLink to="/">Suport</FooterLink>
+                                    <FooterLink to="/contact">Contact</FooterLink>
                                 </FooterLinkItems>
                             </FooterLinkWrapper>
                             <FooterLinkWrapper>

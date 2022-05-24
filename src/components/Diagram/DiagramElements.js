@@ -56,6 +56,10 @@ export const TextArea = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: 1600px){
+        width:20%;
+    }
 `
 
 export const Heading = styled.h1`

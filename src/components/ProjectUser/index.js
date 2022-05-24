@@ -4,6 +4,8 @@ import { ButtonProj, ButtonWrap, Container, DiagramsDetails,TopLine, ProjectBttn
 import Icon from '../../images/loading.png';
 import "./style.css"
 import {Transition, CSSTransition, SwitchTransition, TransitionGroup} from "react-transition-group";
+import { collection, query, getDocs, doc, setDoc, getDoc, updateDoc } from "firebase/firestore"; 
+import { auth, db } from '../../App';
 
 import {
     CircleImage, 
@@ -30,7 +32,7 @@ const transitionStyles = {
   exited: { opacity: 0 },
 };
 
-function ProjectUser({isLoading, userName, userFiles}){
+function ProjectUser({isLoading, userName, userFiles, foundFiles}){
 
     let navigate = useNavigate();
 
@@ -51,11 +53,21 @@ function ProjectUser({isLoading, userName, userFiles}){
     const [selectDimension, setSelectDimensio] = useState(false);
     const [selectColor, setSelectColor] = useState(false);
     const [selectProject, setSelectProject] = useState(false);
+    const [objectSize, setObjectSize] = useState("");
 
     const handleColor = event =>{
         setColor(event.target.value);
         setSelectColor(true);
     }
+
+    // useEffect(async () => {
+    //     const q = query(collection(db, "admin"));
+    //     const querySnapshot = await getDocs(q);
+    //     querySnapshot.forEach((doc) => {
+    //         setData(doc.data());
+    //         localStorage.setItem("data",JSON.stringify(doc.data()));
+    //     });
+    // }, [])
 
     const handleWidth = event =>{
         if(parseInt(event.target.value) <= 1100) setWidth(event.target.value);
@@ -72,6 +84,10 @@ function ProjectUser({isLoading, userName, userFiles}){
         if(parseInt(event.target.value) <= 850) setDiameter(event.target.value);
         else setWidth("850");
         setSelectDimensio(true);
+    }
+
+    const handleObjectSize = event => {
+        setObjectSize(event.target.value);
     }
 
     const handleDiagramType = event =>{
@@ -125,13 +141,77 @@ function ProjectUser({isLoading, userName, userFiles}){
         return items;
     }
 
-    const createDiagram = () =>{
+    const createDiagram = async () =>{
         localStorage.setItem("width",width);
         localStorage.setItem("height",height);
         localStorage.setItem("color",color);
         localStorage.setItem("type",diagramType);
         localStorage.setItem("data",data);
         localStorage.setItem("diameter",diameter);
+        localStorage.setItem("limitSize",objectSize);
+        const docRef = doc(db, "admin", "statistics");
+        const docSnap = await getDoc(docRef);
+        const updateUsers = [];
+        let foundUser = false;
+        let foundDiagram = false;
+        docSnap.data().children.forEach((elem) => {
+            if(elem.name === localStorage.getItem("user")){
+                foundUser = true;
+                const objChild = [];
+                //exista userul si are diagrame deja create
+                    elem.children.forEach((child) => {
+                        const objChildren = {};
+                        const valueOfChild = "";
+                        if(child.name === localStorage.getItem("type")){
+                            foundDiagram = true;
+                            objChildren.value = (parseInt(child.value) + 1).toString();
+                        }else{
+                            objChildren.value = child.value;
+                        }
+                        objChildren.name = child.name;
+                        console.log(objChildren);
+                        objChild.push(objChildren);
+                    })
+                    if(foundDiagram === false){
+                        const objChildren = {
+                            name: localStorage.getItem("type"),
+                            value: "1"
+                        };
+                        objChild.push(objChildren);
+                    }
+                    const userUpdated = {
+                        children: objChild,
+                        name: elem.name
+                    }
+                    updateUsers.push(userUpdated);
+            }
+            else
+            {
+                updateUsers.push(elem);
+            }
+        })
+        //userul nu exista si nu are nici diagrame create
+        if(foundUser === false){
+            const objChild = [];
+            const objChildren = {
+                name: localStorage.getItem("type"),
+                value: "1"
+            };
+            objChild.push(objChildren);
+            const newUser = {
+                name: localStorage.getItem("user"),
+                children: objChild
+            }
+            updateUsers.push(newUser);
+        }
+        console.log(updateUsers);
+        const objectUpdate = {
+            name: "users",
+            children: updateUsers
+        }
+        console.log(docSnap.data());
+        console.log(objectUpdate);
+        await setDoc(docRef, objectUpdate);
         navigate("/diagramPage");
     }
 
@@ -165,12 +245,75 @@ function ProjectUser({isLoading, userName, userFiles}){
         }
     }
 
+    const handleColorForZoomable = () => {
+        if(color === "deep"){
+            return (
+                    <DimensionSection>
+                        <Label htmlFor='for'>Alege mărimea</Label>
+                        <Input type="number" value={objectSize} onChange={handleObjectSize} required />
+                    </DimensionSection>
+            )
+        }else{
+            return (<></>)
+        }
+    }
+
+    const handleDiagramColor = () => {
+        if(diagramType === "treemapZoomable"){
+            return (
+                <DimensionWrap>
+                    <DimensionSection>
+                    <Label htmlFor='for' style={{color:"transparent"}}>hahaha</Label>
+                    <ColorSelect value={color} onChange={handleColor} required>
+                        <option value="default">Selecteaza</option>
+                        <option value="simple">O sigură culoare</option>
+                        <option value="deep">Evientiază obiectele cu o marime mai mare de</option>
+                    </ColorSelect>
+                    </DimensionSection>
+                    {handleColorForZoomable()}
+            </DimensionWrap>
+            )
+        }else{
+            return (
+                <ColorSelect value={color} onChange={handleColor} required>
+                    <option value="default">Selecteaza</option>
+                    <option value="pachet">Colorare pe pachete</option>
+                    <option value="scale">Colorare în funcție de mărime</option>
+                </ColorSelect>
+            )
+        }
+    }
+
     return(
             isLoading ? (
                         <Container>
                             <ServicesIcon src={Icon} />
                         </Container>
             ) : (
+                foundFiles ? (
+                    <>
+                        <Container>
+                            <ProjectForm>
+                                <ProjectBttn>
+                                    <BtnNew key={"buttonCreateFile"} className="success3" onClick={createNewProject}>Crează un nou proiect sau adauga un fișier nou unui proiect existent</BtnNew>
+                                    {/* <BtnNew key={"buttonCreateFile"} className="success3" onClick={(e) => download(e)}>Crează un nou proiect sau adauga un fișier nou unui proiect existent</BtnNew> */}
+                                </ProjectBttn>
+                            </ProjectForm>
+                            <CircleImage>
+                        <CircleGroup>
+                            <FullCircle />  
+                            <FullCircle3 />  
+                            <EmptyCircle />  
+                        </CircleGroup>
+                        <CircleGroup2>
+                            <FullCircle4 />  
+                            <FullCircle2 />
+                        </CircleGroup2>
+                    </CircleImage>
+                        </Container>
+                    </>
+                ) : 
+                (
                     <>
                         <Container>
                             <ProjectForm>
@@ -242,11 +385,12 @@ function ProjectUser({isLoading, userName, userFiles}){
                                                                     }}
                                                                 >
                                                                     <Title>Alege modul de colorare al diagramei</Title>
-                                                                    <ColorSelect value={color} onChange={handleColor} required>
+                                                                    {/* <ColorSelect value={color} onChange={handleColor} required>
                                                                         <option value="default">Selecteaza</option>
                                                                         <option value="pachet">Colorare pe pachete</option>
                                                                         <option value="scale">Colorare în funcție de mărime</option>
-                                                                    </ColorSelect>
+                                                                    </ColorSelect> */}
+                                                                    {handleDiagramColor()}
                                                                 </TabColor>
                                                                 )}
                                                             </Transition>
@@ -270,6 +414,7 @@ function ProjectUser({isLoading, userName, userFiles}){
                                 </ProjectsWrappers>
                                 <ProjectBttn>
                                     <BtnNew key={"buttonCreateFile"} className="success3" onClick={createNewProject}>Crează un nou proiect sau adauga un fișier nou unui proiect existent</BtnNew>
+                                    {/* <BtnNew key={"buttonCreateFile"} className="success3" onClick={(e) => download(e)}>Crează un nou proiect sau adauga un fișier nou unui proiect existent</BtnNew> */}
                                 </ProjectBttn>
                             </ProjectForm>
                             <CircleImage>
@@ -285,6 +430,8 @@ function ProjectUser({isLoading, userName, userFiles}){
                     </CircleImage>
                         </Container>
                     </>
+                )
+                    
                 )
     )
 }

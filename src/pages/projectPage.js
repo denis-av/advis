@@ -16,6 +16,7 @@ function ProjectPage(){
     const [userName, setUserName] = useState("");
     const [userProjects, setUserProjects] = useState([]);
     const [userFiles, setUserFiles] = useState([]);
+    const [foundFiles, setFoundFiles] = useState(true);
     const [isLoading, setLoading] = useState(true)
 
     useEffect(async () => {
@@ -36,6 +37,7 @@ function ProjectPage(){
                         projectDocument: docum.data()
                     }
                     userFiles.push(object);
+                    setFoundFiles(false);
                 });
                 setLoading(false) //stop loading when data is fetched
             }catch(error){
@@ -51,7 +53,7 @@ function ProjectPage(){
         <>
             <SidebarUser isOpen={isOpen} toggle={toggle}/>
             <NavbarUser toggle={toggle}/>
-            <ProjectUser isLoading ={isLoading} userFiles = {userFiles} userName = {userName} />
+            <ProjectUser isLoading ={isLoading} userFiles = {userFiles} userName = {userName} foundFiles = {foundFiles}/>
             <Footer />
         </>
     )
