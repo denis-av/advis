@@ -91,7 +91,7 @@ export const EmptyCircle = styled.div`
 
 export const FormArea = styled.div`
     width: 60%;
-    height: 80%;
+    height: 75%;
     margin: auto;
     margin-top: 10vh;
     margin-left: 10%;

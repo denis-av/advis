@@ -1,0 +1,55 @@
+/* Green */
+.success {
+    border-color: #546b7b;
+    color: #546b7b;
+  }
+  
+.success:hover {
+background-color: #748494;
+color: white;
+}
+
+.success:visited {
+    background-color: #748494;
+    color: white;
+    }
+.success:focus{
+    background-color: #748494;
+    color: white;
+}
+
+.success:active {
+    transform: translateY(-20%);
+}
+
+/* Green */
+.success2 {
+    border-color: #546b7b;
+    color: #546b7b;
+  }
+  
+.success2:hover {
+background-color: #748494;
+color: white;
+}
+
+.success2:focus{
+    background-color: #748494;
+color: white;
+}
+
+.success3 {
+    border-color: #546b7b;
+    color: #546b7b;
+  }
+  
+.success3:hover {
+background-color: #546b7b;
+color: white;
+}
+
+.success3:focus{
+    background-color: #546b7b;
+color: white;
+}
+

@@ -1,0 +1,57 @@
+legend {
+    background-color: white;
+    padding: 3px 8px;
+    border: 1px solid #bbb;
+}
+
+text {
+    transition: all 0.3s;
+    text-overflow: ellipsis;
+}
+.label {
+    fill: #000;
+}
+
+.node {
+    cursor: default;
+}
+
+.node circle {
+    transition: transform 200ms ease-in-out;
+}
+
+.node:hover circle {
+    transform: scale(1.05);
+  }
+
+.graph {
+    opacity: 0;
+    animation-name: animateIn;
+    animation-duration: 900ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.7, 0.85, 0.41, 1.21);
+}
+@keyframes animateIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-8deg);
+   }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+   }
+}
+
+.toolTip {
+    position: absolute;
+    display: none;
+    width: auto;
+    height: auto;
+    background: none repeat scroll 0 0 white;
+    border: 0 none;
+    border-radius: 8px 8px 8px 8px;
+    color: black;
+    font: 12px sans-serif;
+    padding: 5px;
+    text-align: center;
+  }

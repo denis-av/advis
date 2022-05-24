@@ -26,34 +26,39 @@ function Login() {
 
 
     async function LoginUser(e) {
-        const user = email.substring(0,email.indexOf("@"));
-            localStorage.setItem('user', user);
-        // signInWithEmailAndPassword(auth, email, password)
-        // .then(() => {
-        //     const user = email.substring(0,email.indexOf("@"));
-        //     navigate("/mainPage");
-        //     sessionStorage.setItem('user', user);
-        // })
-        // .catch((error) => {
-        //     console.log(error.message);
-        //     switch (error.code){
-        //         case "auth/invalid-email":
-        //             setTextError("Email invalid!");
-        //             break;
-        //         case "auth/wrong-password":
-        //             setTextError("Parola incorecta!");
-        //             break;
-        //         case "auth/user-not-found":
-        //             setTextError("Contul nu a fost gasit!");
-        //             break;
-        //     };
-        //     setEmail("");
-        //     setPassword("");
-        // });       
+        signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+            if(email === "adviscompany.adim@gmail.com"){
+                localStorage.setItem("AdminLogged","true");
+                navigate("/adminMainPage");
+                localStorage.setItem('user', "admin");
+            }else{
+                const user = email.substring(0,email.indexOf("@"));
+                localStorage.setItem("UserLogged","true");
+                navigate("/mainPage");
+                localStorage.setItem('user', user);
+            }
+        })
+        .catch((error) => {
+            console.log(error.message);
+            switch (error.code){
+                case "auth/invalid-email":
+                    setTextError("Email invalid!");
+                    break;
+                case "auth/wrong-password":
+                    setTextError("Parola incorecta!");
+                    break;
+                case "auth/user-not-found":
+                    setTextError("Contul nu a fost gasit!");
+                    break;
+            };
+            setEmail("");
+            setPassword("");
+        });       
     }
         return (
             <>
-            <SignInContainer style ={{ backgroundImage: 'url('+ require('../images/pexels-lukas-669614.jpg') + ')',
+            <SignInContainer style ={{ backgroundImage: 'url('+ require('../images/login_back.jpg') + ')',
                                                             backgroundPosition: 'center',
                                                             backgroundSize: 'cover',
                                                             backgroundRepeat: 'no-repeat'}}>
@@ -70,7 +75,8 @@ function Login() {
                                     <FormLabel htmlFor='for'>Parolă</FormLabel>
                                     <FormInput type='password'value={password} onChange={handlePassword} placeholder="*******" required/>
                                     <FormButton onClick={LoginUser}>Autentificare</FormButton>
-                                    <Text to="/signup">Nu am cont, vreau sa ma înregistrez!</Text>
+                                    <Text to="/signin/resetPassword">Am uitat parola</Text>
+                                    <Text to="/signup">Vreau sa mă înregistrez!</Text>
                                     <FormLabel htmlFor='for' style={{color:"#000000", fontWeight: "normal", textAlign: "center"}}>{textError}</FormLabel>
                                 </FormGroup>
                                 <ImgWrapper style={{display:'flex', alignContent:'center',alignItems:'center'}}>

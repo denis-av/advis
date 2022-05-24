@@ -16,7 +16,7 @@ export default class SidebarUser extends React.Component {
                     <SidebarMenu>
                         <SidebarLink to='/mainPage' onClick={this.props.toggle}>Home</SidebarLink>
                         <SidebarLink to='' onClick={this.props.toggle}>Proiecte</SidebarLink>
-                        <SidebarLink to='' onClick={this.props.toggle}>Crează</SidebarLink>
+                        {/* <SidebarLink to='' onClick={this.props.toggle}>Crează</SidebarLink> */}
                         <SidebarLink to='' onClick={this.props.toggle}>Documentatie</SidebarLink>
                         <SidebarLink to='' onClick={this.props.toggle}>Profil</SidebarLink>
                         <SidebarLink to='/home' onClick={this.props.toggle}>Logout</SidebarLink>

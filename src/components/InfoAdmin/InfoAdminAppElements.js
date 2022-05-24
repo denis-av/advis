@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import {Link as LinkR} from 'react-router-dom';
 
 export const InfoContainer = styled.div`
     display: flex;
@@ -108,7 +107,7 @@ export const TextAreaInfo = styled.div`
     height: 80%;
     margin: auto;
     margin-top: 10vh;
-    margin-left: 0%;
+    margin-left: 10%;
 `
 export const TopLine = styled.p`
     color: #01bf71;
@@ -141,7 +140,7 @@ export const Subtitle = styled.p`
 `;
 
 export const TextDiv = styled.div`
-    margin-top: 5vh;
+    margin-top: 15vh;
     margin-left: 10vh;
     margin-right: 10vh;
 `
@@ -152,64 +151,10 @@ export const ImageWrapper = styled.div`
     height: 80%;
     width: 45%;
     margin-right: 5%;
-    margin-top: 10vh;
+    margin-top: 5vh;
     margin-bottom: 10vh;
 `
 
 export const ServicesIcon = styled.img`
     margin:auto;
-`
-
-export const ServicesIcon2 = styled.img`
-    width: 90%;
-    margin:auto;
-`
-
-export const ServicesIcon3 = styled.img`
-    height: 90%;
-    width: 60%;
-    margin:auto;
-`
-
-export const WrappImg1 = styled.div`
-    margin-left: 0%;
-`
-
-export const WrappImg2 = styled.div`
-   
-`
-
-export const WrappImg3 = styled.div`
-    margin-left: 30%;
-`
-
-export const NavBtn = styled.nav`
-    display: flex;
-    align-items: center;
-
-    @media screen and (max-width: 768px){
-        display: none;
-    }
-`
-
-export const NavBtnLink = styled.button`
-    border-radius: 50px;
-    background-color: #bfbdc1;
-    white-space: nowrap;
-    font-weight: bold;
-    font-family: 'Regular';
-    padding:  10px 22px;
-    color: #000;
-    font-size: 1.3rem;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    text-decoration: none;
-
-    &:hover {
-        transition: all 0.2s ease-in-out;
-        background: #DBD4CE;
-        color: #000;
-    }
 `

@@ -6,24 +6,13 @@ import { auth } from '../../App';
 import { useNavigate } from 'react-router-dom';
 
 
-function NavbarUser({toggle}){
+function NavbarAdmin({toggle}){
 
   let navigate = useNavigate();
 
   function LogoutUser(e) {
     signOut(auth).then(() => {
       navigate("/home");
-      localStorage.removeItem("documentName");
-      localStorage.removeItem("height");
-      localStorage.removeItem("projectName");
-      localStorage.removeItem("limitSize");
-      localStorage.removeItem("diameter");
-      localStorage.removeItem("color");
-      localStorage.removeItem("data");
-      localStorage.removeItem("user");
-      localStorage.removeItem("type");
-      localStorage.removeItem("userFirstName");
-      localStorage.removeItem("width");
     }).catch((error) => {
       // An error happened.
     });
@@ -38,20 +27,11 @@ function NavbarUser({toggle}){
               <FaBars />
           </MobileIcon>
           <NavMenu>
-            <NavItem>
-                  <NavLinks to='/mainPage'>Home</NavLinks>
+              <NavItem>
+                  <NavLinks to='/statistics'>Statistici</NavLinks>
               </NavItem>
               <NavItem>
-                  <NavLinks to='/projects'>Proiecte</NavLinks>
-              </NavItem>
-              {/* <NavItem>
-                  <NavLinks to='/createDiagram'>Crează</NavLinks>
-              </NavItem> */}
-              <NavItem>
-                  <NavLinks to='/documentation'>Documentatie</NavLinks>
-              </NavItem>
-              <NavItem>
-                  <NavLinks to=''>Profil</NavLinks>
+                  <NavLinks to=''>Utilizatori</NavLinks>
               </NavItem>
           </NavMenu>
           <NavBtn>
@@ -63,4 +43,4 @@ function NavbarUser({toggle}){
     )
 }
 
-export default NavbarUser;
+export default NavbarAdmin;

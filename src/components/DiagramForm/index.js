@@ -44,7 +44,7 @@ function DiagramForm() {
 
      useEffect(async ()=>{
         //user
-        const user = "avramdenis58";
+        const user = localStorage.getItem("user");
         // preluare date din FireStore
         const q = query(collection(db, user));
         const querySnapshot = await getDocs(q);
@@ -100,7 +100,7 @@ function DiagramForm() {
         if(newProject  === true){
             //construire obiect
             const docData = {
-                diagramType: diagramType,
+                //diagramType: diagramType,
                 jsonContent: fileContent
             }
             const map = new Map();
@@ -108,17 +108,25 @@ function DiagramForm() {
             //transformare din map in object
             const objectDiagram = Object.fromEntries(map);
             //user
-            const user = "avramdenis58";
+            const user = localStorage.getItem("user");
             // preluare date din FireStore
             const docRef = doc(db, user, projectName);
             const docSnap = await getDoc(docRef);
-            const test = docSnap.data();
-            test[diagramName] = docData;
-            await setDoc(docRef, test);
+            const docReceived = docSnap.data();
+            const newProj = {};
+            if(docReceived != null){
+                docReceived[diagramName] = docData;
+                await setDoc(docRef, docReceived);
+            }
+            else{
+            newProj[diagramName] = docData;
+            await setDoc(docRef, newProj);
+            }
+            
         }else{
             //construire obiect
             const docData = {
-                diagramType: diagramType,
+                //diagramType: diagramType,
                 jsonContent: fileContent
             }
             const map = new Map();
@@ -126,7 +134,7 @@ function DiagramForm() {
             //transformare din map in object
             const objectDiagram = Object.fromEntries(map);
             //user
-            const user = "maeto";
+            const user = localStorage.getItem("user");
             await setDoc(doc(db, user, projectName), objectDiagram);
         }
         setProjectName("");
@@ -175,14 +183,6 @@ function DiagramForm() {
                                     <FormInput type="text" value={projectName} onChange={handleProjectName} required/>
 
                                 }
-                                <FormLabel htmlFor="for">Tipul diagramei create</FormLabel>
-                                <FormSelect type="text" value={diagramType} onChange={handleDiagramType} required>
-                                            <option value="default">Selecteaza</option>
-                                            <option value="TreemapStatic">Treemap static</option>
-                                            <option value="TreemapZoomable">Treemap zoomable</option>
-                                            <option value="BubbleChart">BubbleChart</option>
-                                            <option value="CollapsibleTree">CollapsibleTree</option>
-                                </FormSelect>
                                 <FormLabel htmlFor="for">Numele diagramei</FormLabel>
                                 <FormInput type="text" value={diagramName} onChange={handleDiagramName} required/>
                                 <FormLabel htmlFor="for">Fișier JSON</FormLabel>

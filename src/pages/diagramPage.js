@@ -3,10 +3,17 @@ import NavbarUser from '../components/Navbar_user';
 import SidebarUser from '../components/Sidebar-user';
 import Footer from '../components/Footer'
 import Treemap from './staticTreemap';
-import "./style_static.css"
 import { doc, getDoc } from "firebase/firestore";
 import { db } from '../App';
 import {useEffect, useState} from 'react';
+import { DiagramWrap, Heading, TextArea, Subtitle,TopLine } from '../components/Diagram/DiagramElements';
+import ZoomableTreemap from "./zoomableTreemap";
+import "../styles/style_static.css"
+import "../styles/style_zoomable.css"
+import "../pages/style_bubblechart.css"
+import BubbleChart from './bubbleChart';
+import CollapsibleTree from './collapsibleTree';
+
 
 function DiagramPage(){
 
@@ -14,34 +21,24 @@ function DiagramPage(){
     const[d3,setD3] = useState("");
     const[data,setData] = useState({});
 
-    useEffect(async () => {
-        async function getData(){
-            const docRef = doc(db, "avramdenis58", "JDFApplication");
-            const docSnap = await getDoc(docRef);
-
-            if (docSnap.exists()) {
-                //console.log("Document data:", docSnap.data().jsonContent);
-                const test = docSnap.data();
-                const json = test["TestareaMea"].jsonContent;
-                return json;
-            } else {
-                console.log("No such document!");
-            }
-        }
-        const posts = await getData();
-        localStorage.setItem('data', posts);
-        //console.log(JSON.parse(posts));
-    },[]);
-
     const toggle = () =>{
         setIsOpen(!isOpen);
+    }
+
+    const handleDiagram = () => {
+        const value = localStorage.getItem("type");
+        if(value === "treemapStatic") return <Treemap width={parseInt(localStorage.getItem("width"))} height={parseInt(localStorage.getItem("height"))} />;
+        else if(value === "treemapZoomable" ) return <ZoomableTreemap width={parseInt(localStorage.getItem("width"))} height={parseInt(localStorage.getItem("height"))} />;
+            else if(value === "bubbleChart" ) return <BubbleChart width={parseInt(localStorage.getItem("width"))} height={parseInt(localStorage.getItem("height"))} />;
     }
 
         return (
             <>
                 <SidebarUser isOpen={isOpen} toggle={toggle}/>
                 <NavbarUser toggle={toggle}/>
-                <Treemap width={1100} height={600} />;
+                <DiagramWrap>
+                    {handleDiagram()}
+                </DiagramWrap>
                 <Footer />
             </>
         )

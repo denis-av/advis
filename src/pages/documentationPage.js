@@ -12,7 +12,7 @@ import { FormButton } from '../components/Signup/SignupElements';
 import { useNavigate } from 'react-router-dom';
 
 
-function MainPage() {
+function Documentation() {
 
     let navigate = useNavigate();
     const[isOpen, setIsOpen] = useState(false);
@@ -33,10 +33,6 @@ function MainPage() {
     //     }
     // },[data])
 
-    const transferPage = () => {
-        navigate("/diagramPage");
-    }
-
     const toggle = () =>{
         setIsOpen(!isOpen);
     }
@@ -45,12 +41,9 @@ function MainPage() {
             <>
                 <SidebarUser isOpen={isOpen} toggle={toggle} />
                 <NavbarUser toggle={toggle}/>
-                <InfoSectionUser {...homeObjOne}/>
-                {/* <FormButton onClick={transferPage}>Denis</FormButton> */}
-                <InfoAppUser />
                 <Footer />
             </>
         )
 }
 
-export default MainPage
+export default Documentation
