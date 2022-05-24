@@ -50,7 +50,11 @@ export default function ZoomableTreemap({width, height}) {
     var x = d3.scaleLinear().domain([0,width]).range([0,width]);
     var y = d3.scaleLinear().domain([0, height]).range([0, height]);
     var treemap = d3.treemap().size([width, height]).paddingInner(0).round(false);
+    var tool = d3.select("body").append("div").attr("class", "toolTip");
+    
     var leaves = [];
+    var sequence = [];
+
 
     function renderTreemap() {
             const svg = d3.select(svgRef.current).attr("width", width + 100)
@@ -80,8 +84,16 @@ export default function ZoomableTreemap({width, height}) {
                                         
             // create root node
             const root = d3.hierarchy(data)
-                            .sum(function (d) {return d.value;})
-                            .sort(function (a, b) {return b.height - a.height || b.value - a.value});
+                            .sum(function (d) {return detectJSONAttribute(d);})
+                            .sort(function (a, b) {return b.height - a.height || detectJSONAttribute(b) - detectJSONAttribute(a)});
+
+            function detectJSONAttribute(d){
+                if(d.value != null) return d.value;
+                else if(d.codeSizeMax != null) return d.codeSizeMax;
+                        else if(d.methodsNumber != null) return d.methodsNumber;
+            }
+
+            findPathForColoring(root);
 
             // create treemap layout
             const treemapRoot = d3.treemap().size([width, height])(root);
@@ -138,7 +150,7 @@ export default function ZoomableTreemap({width, height}) {
                     .attr("class", "foreignobj")
                     .append("xhtml:div")
                     .attr("dy", ".75em")
-                    .html(function (d) { return '' + '<p class="title"> ' + d.data.name + '</p>' + '<p>' + formatNumber(d.value) + '</p>'; })
+                    .html(function (d) { return '' + '<p class="title"> ' + d.data.name + '</p>' + '<p>' + formatNumber(detectJSONAttribute(d)) + '</p>'; })
                     .attr("class", "textdiv");
 
                     function transition(d) {
@@ -167,6 +179,27 @@ export default function ZoomableTreemap({width, height}) {
                 return g;
             }
 
+            function findPathForColoring(d){
+                //console.log(d.leaves());
+                d.leaves().forEach((elem) => {
+                    if(parseInt(detectJSONAttribute(elem.data)) >= parseInt(localStorage.getItem("limitSize"))){
+                        let name = generateParentName(elem) + "." + elem.data.name;
+                        if(!sequence.includes(name)){
+                            sequence.push(name);
+                        }
+                        while(name.indexOf(".") > 0){
+                            name = name.substring(0, name.lastIndexOf("."));
+                            if(!sequence.includes(name)){
+                                sequence.push(name);
+                            }
+                        }
+                        
+                        
+                    }
+                })
+                console.log(sequence);
+            }
+
             function foreign(foreign) { /* added */
                 foreign
                     .attr("x", function (d) {
@@ -193,7 +226,8 @@ export default function ZoomableTreemap({width, height}) {
             }
         
             function rect(rect) {
-                rect
+                if(localStorage.getItem("color") === "deep"){
+                    rect
                     .attr("x", function (d) {
                         return x(d.x0);
                     })
@@ -209,6 +243,69 @@ export default function ZoomableTreemap({width, height}) {
                     .attr("fill", function (d) {
                         return "#bbbbbb";
                     })
+                    .attr("style", function (d) {
+                        var point = countDeep(d)/5;
+                        //if (sequence.includes(generateName(d))) return "opacity: " + point.toString();
+                        if (sequence.includes(generateName(d))) return "background: rgba(255, 0, 0, " + point.toString() + " )";
+                        else return "opacity: 1"
+                    });
+                }
+                else{
+                    rect
+                    .attr("x", function (d) {
+                        return x(d.x0);
+                    })
+                    .attr("y", function (d) {
+                        return y(d.y0);
+                    })
+                    .attr("width", function (d) {
+                        return x(d.x1) - x(d.x0);
+                    })
+                    .attr("height", function (d) {
+                        return y(d.y1) - y(d.y0);
+                    })
+                    .attr("fill", function (d) {
+                        return "#bbbbbb";
+                    });
+                }
+            }
+
+            function generateParentName(d){
+                var res = "";
+                var sep = ".";
+                d.ancestors().reverse().forEach(function(i){
+                    res += i.data.name + sep;
+                });
+                res = res.split(sep)
+                    .filter(function(i){
+                        return i!== "";
+                    })
+                    .join(sep);
+                return res.substring(0,res.lastIndexOf("."));
+            }
+
+            function generateName(d) {
+                var res = "";
+                var sep = ".";
+                d.ancestors().reverse().forEach(function(i){
+                    res += i.data.name + sep;
+                });
+                return res
+                .split(sep)
+                .filter(function(i){
+                    return i!== "";
+                })
+                .join(sep);
+            }
+
+            function countDeep(d){
+                var name = "";
+                var sep = ".";
+                d.ancestors().reverse().forEach(function(i){
+                    name += i.data.name + sep;
+                });
+                var count = (name.match(/\./g) || []).length;
+                return count -1;
             }
         
 

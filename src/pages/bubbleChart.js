@@ -34,18 +34,26 @@ export default function BubbleChart({width, height}) {
         var pathsWithColor = [];
         var objPathColor = {};
         var paths = [];
+        var intervals = [];
           // create root node
         const root = d3
         .hierarchy(data)
-        .sum(function (d) {return d.value;})
-        .sort(function (a, b) {return b.height - a.height || b.value - a.value});
+        .sum(function (d) {return detectJSONAttribute(d)})
+        .sort(function (a, b) {return b.height - a.height || detectJSONAttribute(b) - detectJSONAttribute(a)});
+
+      function detectJSONAttribute(d){
+        if(d.value != null) return d.value;
+        else if(d.codeSizeMax != null) return d.codeSizeMax;
+              else if(d.methodsNumber != null) return d.methodsNumber;
+      }
 
         generateColorForEachPath(root);
+        generateColorForEachSize(root);
         var tool = d3.select("body").append("div").attr("class", "toolTip");
         // create treemap layout
         const treemapRoot = d3.treemap().size([width, height])(root);
 
-        const values = treemapRoot.leaves().map(d => d.data.value);
+        const values = treemapRoot.leaves().map(d => detectJSONAttribute(d.data));
         const min = Math.min.apply(null, values);
         const max = Math.max.apply(null, values);
 
@@ -83,7 +91,7 @@ export default function BubbleChart({width, height}) {
             tool.style("left", event.pageX + 10 + "px")
             tool.style("top", event.pageY - 20 + "px")
             tool.style("display", "inline-block");
-            tool.html(d.children ? null : "<b>" + generateParentName(d) + "<br>" + d.data.name  + "<br>" +  d.data.value + "</b>");
+            tool.html(d.children ? null : "<b>" + generateParentName(d) + "<br>" + d.data.name  + "<br>" +  detectJSONAttribute(d.data) + "</b>");
         }).on("mouseout", function (d) {
             tool.style("display", "none");
         });
@@ -106,6 +114,85 @@ export default function BubbleChart({width, height}) {
           .style("fill", "#000000")
           .style('pointer-events', 'none');
 
+
+          function generateColorForEachSize(d){
+            const values = [];
+            d.leaves().forEach((elem) => {
+                values.push(detectJSONAttribute(elem.data));
+            });
+            const min = Math.min(...values);
+            const max = Math.max(...values)
+            console.log(min);
+            console.log(max);
+            let step = (max - min) / 10;
+            [ ...Array(10) ].forEach((e, i) => {
+                const intrv = {};
+                let sum1 = parseInt(min) + parseInt(step * i);
+                let sum2 = parseInt(min) + parseInt(step * (i+1));
+                intrv.min = sum1;
+                intrv.max = sum2;
+                intrv.color = generateColorForScale(i);
+                intervals.push(intrv);
+            });
+            console.log(intervals);
+        }
+
+        function generateColorForScale(d){
+            if(d === 0){
+                return 'rgb(0, 255, 0)';
+            }
+            else if(d === 1){
+                return 'rgb(60, 255, 0)';
+            }
+            else if(d === 2){
+                return 'rgb(125, 255, 0)';
+            }
+            else if(d === 3){
+                return 'rgb(190, 255, 0)';
+            }
+            else if(d === 4){
+                return 'rgb(255, 255, 0)';
+            }
+            else if(d === 5){
+                return 'rgb(255,255,0)';
+            }
+            else if(d === 6){
+                return 'rgb(255,190,0)';
+            }
+            else if(d === 7){
+                return 'rgb(255,125,0)';
+            }
+            else if(d === 8){
+                return 'rgb(255,60,0)';
+            }
+            else if(d === 9){
+                return 'rgb(255, 0, 0)';
+            }
+        }
+
+        function identifyColor(d){
+          let color = "";
+          if(localStorage.getItem("color") === "pachet"){
+              pathsWithColor.forEach((elem) => {
+                  let pathName = generateName(d).substring(0,generateName(d).lastIndexOf("."));
+                  if(pathName === elem.path) {
+                      color = elem.color;
+                  }
+              });
+          }
+          else if(localStorage.getItem("color") === "scale"){
+              intervals.forEach((elem) => {
+                  let valueD = detectJSONAttribute(d.data);
+                  console.log(valueD);
+                  if(valueD >= elem.min && valueD <= elem.max){
+                      color = elem.color;
+                  };
+              })
+          }
+          return color;
+      }
+
+          console.log(treemapRoot.leaves());
           let categories = pathsWithColor;
           const legendContainer = d3.select(legendRef.current);
           legendContainer.attr('width', width).attr('height', categories.length * 34);
@@ -134,7 +221,7 @@ export default function BubbleChart({width, height}) {
             .text((d) => d.path);
 
           function getLabel(item) {
-            if (item.data.value < max / 2.5) {
+            if (detectJSONAttribute(item.data) < max / 2.5) {
               return '';
             }
             return item.data.name;
@@ -144,16 +231,16 @@ export default function BubbleChart({width, height}) {
             return '';
           }
 
-          function identifyColor(d){
-            let color = "";
-            pathsWithColor.forEach((elem) => {
-                let pathName = generateName(d).substring(0,generateName(d).lastIndexOf("."));
-                if(pathName === elem.path) {
-                    color = elem.color;
-                }
-            });
-            return color;
-        }
+        //   function identifyColor(d){
+        //     let color = "";
+        //     pathsWithColor.forEach((elem) => {
+        //         let pathName = generateName(d).substring(0,generateName(d).lastIndexOf("."));
+        //         if(pathName === elem.path) {
+        //             color = elem.color;
+        //         }
+        //     });
+        //     return color;
+        // }
 
         function generateParentName(d){
           var res = "";

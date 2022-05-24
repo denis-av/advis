@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
 import { DiagramWrap, Heading, TextArea, Subtitle,TopLine } from '../components/Diagram/DiagramElements'
 import styled from 'styled-components';
+import { ColorSelect } from '../components/ProjectUser/ProjectUserElements';
 
 const Wrapp = styled.div`
     //style={{ maxWidth:"1200px", alignContent:"center", justifyContent:"center", marginLeft:"10%", marginTop:"3%", maxHeight:"750px"}}
@@ -15,6 +16,11 @@ const Wrapp = styled.div`
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 3%;
+
+    @media screen and (max-width: 1600px){
+        margin-left: 0%;
+        margin-right: 0%;
+    }
 `
 
 export default function Treemap({width, height}) {
@@ -22,6 +28,7 @@ export default function Treemap({width, height}) {
   console.log(data);
   const svgRef = useRef(null);
   const legendRef = useRef(null);
+  const legendIntrvRef = useRef(null);
   var margin = {top: 30, right:100, bottom:0, left: 100},
              width = width,
              //width = 1000,
@@ -48,16 +55,25 @@ export default function Treemap({width, height}) {
         var pathsWithColor = [];
         var objPathColor = {};
         var paths = [];
+        var intervals = [];
+        var intervalsWithColor = [];
         var tool = d3.select("body").append("div").attr("class", "toolTip");
         var format = d3.format(",d"); 
 
         // create root node
         const root = d3
         .hierarchy(data)
-        .sum(function (d) {return d.value;})
-        .sort(function (a, b) {return b.height - a.height || b.value - a.value});
+        .sum(function (d) {return detectJSONAttribute(d);})
+        .sort(function (a, b) {return b.height - a.height || detectJSONAttribute(b) - detectJSONAttribute(a)});
+
+        function detectJSONAttribute(d){
+            if(d.value != null) return d.value;
+            else if(d.codeSizeMax != null) return d.codeSizeMax;
+                 else if(d.methodsNumber != null) return d.methodsNumber;
+        }
         
         generateColorForEachPath(root);
+        generateColorForEachSize(root);
 
         // create treemap layout
         const treemapRoot = d3.treemap().size([width, height])(root);
@@ -83,35 +99,36 @@ export default function Treemap({width, height}) {
                 tool.style("left", event.pageX + 10 + "px")
                 tool.style("top", event.pageY - 20 + "px")
                 tool.style("display", "inline-block");
-                tool.html(d.children ? null : "<b>" + generateParentName(d) + "<br>" + d.data.name  + "<br>" +  d.data.value + "</b>");
+                tool.html(d.children ? null : "<b>" + generateParentName(d) + "<br>" + d.data.name  + "<br>" +  detectJSONAttribute(d.data) + "</b>");
             }).on("mouseout", function (d) {
                 tool.style("display", "none");
             });
 
         const fontSize = 9;
 
-      nodes.append("clipPath")
-       .attr("id", function(d) { return "clip-" + d.data.id; })
-     .append("rect")
-       .attr("width", d => d.x1 - d.x0)
-       .attr("height", d => d.y1 - d.y0);
+        nodes.append("clipPath")
+        .attr("id", function(d) { return "clip-" + d.data.id; })
+        .append("rect")
+        .attr("width", d => d.x1 - d.x0)
+        .attr("height", d => d.y1 - d.y0);
 
-    nodes.append("text")
-        .attr("clip-path", function(d) { return "url(#clip-" + d.data.id + ")"; })
-      .selectAll("tspan")
-      .data(function(d) { return (d.data.name + "\n" + d.data.value).split(/\n/g); })
-      .join("tspan")
-        .attr("x", 3)
-        .attr("y", (d, i, D) => `${(i === D.length - 1) * 0.3 + 1.1 + i * 0.9}em`)
-        .attr('font-size', `${fontSize}px`)
-        .attr("font-weight","bold")
-        .attr("style","@media only screen and (max-width: 960px)  {font-size: 9px}")
-        .text(d => d);   
+        nodes.append("text")
+            .attr("clip-path", function(d) { return "url(#clip-" + d.data.id + ")"; })
+            .selectAll("tspan")
+            .data(function(d) { return (d.data.name + "\n" + detectJSONAttribute(d.data)).split(/\n/g); })
+            .join("tspan")
+                .attr("x", 3)
+                .attr("y", (d, i, D) => `${(i === D.length - 1) * 0.3 + 1.1 + i * 0.9}em`)
+                .attr('font-size', `${fontSize}px`)
+                .attr("font-weight","bold")
+                .attr("style","@media only screen and (max-width: 960px)  {font-size: 9px}")
+                .text(d => d);   
 
         let categories = pathsWithColor;
         const legendContainer = d3.select(legendRef.current);
         legendContainer.attr('width', width).attr('height', categories.length * 34);
 
+        console.log("hahaha");
         console.log(categories);
 
         categories = categories.filter(
@@ -135,16 +152,51 @@ export default function Treemap({width, height}) {
         .style("color","#ffffff")
         .text((d) => d.path);
 
-        function identifyColor(d){
-            let color = "";
-            pathsWithColor.forEach((elem) => {
-                let pathName = generateName(d).substring(0,generateName(d).lastIndexOf("."));
-                if(pathName === elem.path) {
-                    color = elem.color;
-                }
-            });
-            return color;
-        }
+
+        let intervalsOfColors = intervals;
+        const legendForScale = d3.select(legendIntrvRef.current);
+        legendForScale.attr('width', width).attr('height', intervalsOfColors.length * 34);
+
+        console.log("hahaha");
+        console.log(intervalsOfColors);
+
+        const legendScale = legendForScale.selectAll('g').data(intervalsOfColors).join('g');
+
+        legendScale.append('rect')
+            .attr('width', "17px")
+            .attr('height', "17px")
+            .attr('x', "17")
+            .attr('y', (_, i) => 17 * 2 * i)
+            .attr('fill', (d) => d.color);
+
+        legendScale.append('text')
+            .attr('transform', `translate(0, 13)`)
+            .attr('x', 17 * 3)
+            .attr('y', (_, i) => 17 * 2 * i)
+            .style('font-size', "15px")
+            .style("color","#ffffff")
+            .text((d) => { return "Obiecte ale căror size aparține intervalului [" + d.min + " , " + d.max + "]"});
+
+
+        // function identifyColor(d){
+        //     let color = "";
+        //     if(localStorage.getItem("color") === "pachet"){
+        //         pathsWithColor.forEach((elem) => {
+        //             let pathName = generateName(d).substring(0,generateName(d).lastIndexOf("."));
+        //             if(pathName === elem.path) {
+        //                 color = elem.color;
+        //             }
+        //         });
+        //     }
+        //     else if(localStorage.getItem("color") === "scale"){
+        //         intervals.forEach((elem) => {
+        //             if(d.data.value >= elem.min && d.data.value < elem.max){
+        //                 color = elem.color;
+        //             };
+        //         })
+        //     }
+        //     return color;
+        // }
 
         function generateName(d) {
             var res = "";
@@ -158,6 +210,61 @@ export default function Treemap({width, height}) {
                 return i!== "";
             })
             .join(sep);
+        }
+
+        function generateColorForEachSize(d){
+            const values = [];
+            d.leaves().forEach((elem) => {
+                values.push(detectJSONAttribute(elem.data));
+            });
+            const min = Math.min(...values);
+            const max = Math.max(...values)
+            console.log(min);
+            console.log(max);
+            let step = (max - min) / 10;
+            [ ...Array(10) ].forEach((e, i) => {
+                const intrv = {};
+                let sum1 = parseInt(min) + parseInt(step * i);
+                let sum2 = parseInt(min) + parseInt(step * (i+1));
+                intrv.min = sum1;
+                intrv.max = sum2;
+                intrv.color = generateColorForScale(i);
+                intervals.push(intrv);
+            });
+            console.log(intervals);
+        }
+
+        function generateColorForScale(d){
+            if(d === 0){
+                return 'rgb(0, 255, 0)';
+            }
+            else if(d === 1){
+                return 'rgb(60, 255, 0)';
+            }
+            else if(d === 2){
+                return 'rgb(125, 255, 0)';
+            }
+            else if(d === 3){
+                return 'rgb(190, 255, 0)';
+            }
+            else if(d === 4){
+                return 'rgb(255, 255, 0)';
+            }
+            else if(d === 5){
+                return 'rgb(255,255,0)';
+            }
+            else if(d === 6){
+                return 'rgb(255,190,0)';
+            }
+            else if(d === 7){
+                return 'rgb(255,125,0)';
+            }
+            else if(d === 8){
+                return 'rgb(255,60,0)';
+            }
+            else if(d === 9){
+                return 'rgb(255, 0, 0)';
+            }
         }
 
         function generateParentName(d){
@@ -200,12 +307,23 @@ export default function Treemap({width, height}) {
         
         function identifyColor(d){
             let color = "";
-            pathsWithColor.forEach((elem) => {
-                let pathName = generateName(d).substring(0,generateName(d).lastIndexOf("."));
-                if(pathName === elem.path) {
-                    color = elem.color;
-                }
-            });
+            if(localStorage.getItem("color") === "pachet"){
+                pathsWithColor.forEach((elem) => {
+                    let pathName = generateName(d).substring(0,generateName(d).lastIndexOf("."));
+                    if(pathName === elem.path) {
+                        color = elem.color;
+                    }
+                });
+            }
+            else if(localStorage.getItem("color") === "scale"){
+                intervals.forEach((elem) => {
+                    let valueD = detectJSONAttribute(d.data);
+                    console.log(valueD);
+                    if(valueD >= elem.min && valueD <= elem.max){
+                        color = elem.color;
+                    };
+                })
+            }
             return color;
         }
 
@@ -263,6 +381,18 @@ export default function Treemap({width, height}) {
 
   }
 
+  const generateLegend = () => {
+      if(localStorage.getItem("color") === "pachet"){
+          return (
+            <svg ref={legendRef} />
+          )
+      }else if(localStorage.getItem("color") === "scale"){
+          return (
+            <svg ref={legendIntrvRef} />
+          )
+      }
+  }
+
   return (
     // <div className="treemap" style={{ maxWidth:"1200px", alignContent:"center", justifyContent:"center", marginLeft:"10%", marginTop:"3%", maxHeight:"750px"}}>
     //   <svg ref={svgRef} />
@@ -277,7 +407,7 @@ export default function Treemap({width, height}) {
                     <Subtitle darkText={true}>{localStorage.getItem("documentName")}</Subtitle>
                 </TextArea>
         </DiagramWrap>
-    <svg ref={legendRef} />
+        {generateLegend()}
     </Wrapp>
   );
 }
