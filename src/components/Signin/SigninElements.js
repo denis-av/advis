@@ -63,6 +63,10 @@ export const FormButton = styled.button`
     font-size: 15px;
     cursor: pointer;
     margin: auto;
+
+    @media screen and (max-width:768px){
+        font-size: 11px;
+    }
 `
 
 export const Text = styled(Link)`
@@ -95,11 +99,23 @@ export const SignInContainer = styled.div`
 
 export const SignInContent = styled.div`
     width: 40%;
-    height: 60vh;
+    height: 50vh;
     margin-left: 10vh;
-    margin-top: 10vh;
+    margin-top: 15vh;
     background-color: #fff;
     box-shadow: 10px 5px 5px #888888;
+
+    @media screen and (max-width:768px){
+        height: 40vh;
+        margin-top: 20vh;
+    }
+
+    @media screen and (max-width:1600px){
+        width: 40%;
+        height: 60vh;
+        margin-left: 10vh;
+        margin-top: 10vh;
+    }
 `
 
 export const SignInForm = styled.div`
@@ -121,18 +137,31 @@ export const LoginForm = styled.div`
 export const ImgWrapper = styled.div`
     max-width: 225px;
     margin: auto;
-    margin-top: -15%;
+    margin-top: -20%;
 
     @media screen and (max-width:768px){
         max-width: 125px;
+        margin-top: -65%;
     }
 `;
 
 export const FormGroup = styled.div`
     margin-top: 12%;
-    height: 60%;
+    height: 40%;
     width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    @media screen and (max-width:768px){
+        max-width: 125px;
+        margin-top: 7vh;
+    }
+
+    @media screen and (max-width:1600px){
+        margin-top: 12%;
+        height: 60%;
+        width: 50%;
+    }
+
 `

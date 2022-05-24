@@ -28,9 +28,16 @@ function Login() {
     async function LoginUser(e) {
         signInWithEmailAndPassword(auth, email, password)
         .then(() => {
-            const user = email.substring(0,email.indexOf("@"));
-            navigate("/mainPage");
-            localStorage.setItem('user', user);
+            if(email === "adviscompany.adim@gmail.com"){
+                localStorage.setItem("AdminLogged","true");
+                navigate("/adminMainPage");
+                localStorage.setItem('user', "admin");
+            }else{
+                const user = email.substring(0,email.indexOf("@"));
+                localStorage.setItem("UserLogged","true");
+                navigate("/mainPage");
+                localStorage.setItem('user', user);
+            }
         })
         .catch((error) => {
             console.log(error.message);
@@ -68,7 +75,8 @@ function Login() {
                                     <FormLabel htmlFor='for'>Parolă</FormLabel>
                                     <FormInput type='password'value={password} onChange={handlePassword} placeholder="*******" required/>
                                     <FormButton onClick={LoginUser}>Autentificare</FormButton>
-                                    <Text to="/signup">Nu am cont, vreau sa ma înregistrez!</Text>
+                                    <Text to="/signin/resetPassword">Am uitat parola</Text>
+                                    <Text to="/signup">Vreau sa mă înregistrez!</Text>
                                     <FormLabel htmlFor='for' style={{color:"#000000", fontWeight: "normal", textAlign: "center"}}>{textError}</FormLabel>
                                 </FormGroup>
                                 <ImgWrapper style={{display:'flex', alignContent:'center',alignItems:'center'}}>
