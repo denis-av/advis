@@ -38,7 +38,7 @@ function MainPage() {
     }
 
     const toggle = () =>{
-        setIsOpen(!this.state.isOpen);
+        setIsOpen(!isOpen);
     }
 
         return (

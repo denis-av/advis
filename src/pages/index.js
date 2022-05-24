@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import HeroSection from '../components/HeroSection';
 import InfoSection from '../components/InfoSection';
 import SignUpSection from '../components/SignUpSection';
@@ -8,32 +8,30 @@ import Services from '../components/Services';
 import Sidebar from '../components/Sidebar'
 import Footer from '../components/Footer';
 
-export default class Home extends React.Component {
+function Home (){
 
-    constructor(){
-        super();
-        this.state = {
-            isOpen: false,
-        }
+    const [isOpen, setIsOpen] = useState(false);
 
-        this.toggle = this.toggle.bind(this);
-    }
-
-    toggle = () =>{
+    const toggle = () =>{
         this.setState({isOpen: !this.state.isOpen});
+        setIsOpen(!isOpen);
     }
 
-    render(){
-        return (
-            <>
-                <Sidebar isOpen={this.state.isOpen} toggle={this.toggle} />
-                <Navbar toggle={this.toggle}/>
-                <HeroSection />
-                <InfoSection {...homeObjOne}/>
-                <Services />
-                <SignUpSection {...homeObjThree} />
-                <Footer />
-            </>
-        )
-    }
+    useEffect(() => {
+        localStorage.setItem("UserLogged", "false");
+    }, [])
+
+    return (
+        <>
+            <Sidebar isOpen={isOpen} toggle={toggle} />
+            <Navbar toggle={toggle}/>
+            <HeroSection />
+            <InfoSection {...homeObjOne}/>
+            <Services />
+            <SignUpSection {...homeObjThree} />
+            <Footer />
+        </>
+    )
 }
+
+export default Home;
