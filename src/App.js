@@ -13,6 +13,13 @@ import Registration from './pages/registration';
 import Login from './pages/login';
 import CreateDiagram from './pages/createDiagram';
 import ProjectPage from './pages/projectPage';
+import ProtectedRoutesForUser from './ProtectedRoutesForUser';
+import ResetPassword from './pages/resetPassword';
+import AdminMainPage from './pages/adminMainPage';
+import ProtectedRoutesForAdmin from './ProtectedRoutesForAdmin';
+import StatisticsPage from './pages/statisticsPage';
+import Documentation from './pages/documentationPage';
+import Contact from './pages/contact';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAiIcMgbswZMZ8up2cQi-JtO7TtkhmDIXQ",
@@ -39,10 +46,19 @@ export default class App extends React.Component {
             <Route exact path="/home" element={<Home/>}/>
             <Route exact path="/signup" element={<Registration/>}/>
             <Route exact path="/signin" element={<Login/>}/>
-            <Route exact path="/mainpage" element={<MainPage/>}/>
-            <Route exact path="/diagramPage" element={<DiagramPage/>}/>
-            <Route exact path="/createDiagram" element={<CreateDiagram/>} />
-            <Route exact path="/projects" element={<ProjectPage/>} />
+            <Route exact path="/signin/resetPassword" element={<ResetPassword/>}/>
+            <Route exact path="/contact" element={<Contact/>}/>
+            <Route element={<ProtectedRoutesForUser />}>
+              <Route exact path="/mainpage" element={<MainPage/>}/>
+              <Route exact path="/diagramPage" element={<DiagramPage/>}/>
+              <Route exact path="/createDiagram" element={<CreateDiagram/>} />
+              <Route exact path="/projects" element={<ProjectPage/>} />
+              <Route exact path="/documentation" element={<Documentation/>} />
+            </Route>
+            <Route element={<ProtectedRoutesForAdmin />}>
+              <Route exact path="/adminMainPage" element={<AdminMainPage/>} />
+              <Route exact path="/statistics" element={<StatisticsPage/>} />
+            </Route>
           </Routes>
       </Router>
     );
