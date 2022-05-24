@@ -15,7 +15,7 @@ import BubbleChart from './bubbleChart';
 import CollapsibleTree from './collapsibleTree';
 
 
-function DiagramPage({testare}){
+function DiagramPage(){
 
     const[isOpen, setIsOpen] = useState(false);
     const[d3,setD3] = useState("");
