@@ -291,6 +291,19 @@ export const BtnNew = styled.button`
     border-radius: 5px;
 `
 
+export const BtnNew2 = styled.button`
+    border: none;
+    background-color: #546b7b;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    width: 30%;
+    height: 50px;
+    margin: auto;
+    transition: 0.5s;
+    border-radius: 5px;
+`
+
 export const DiagramWrapp = styled.div`
     display: flex;
     flex-direction: column;

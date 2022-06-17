@@ -222,7 +222,7 @@ export const SignupContent = styled.div`
     height: 80vh;
     margin: auto;
     background-color: #bfbdc1;
-    box-shadow: 10px 5px 5px #888888;
+    /* box-shadow: 10px 5px 5px #888888; */
     margin-top: 2%;
     margin-left: -3%;
 `

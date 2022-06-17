@@ -17,7 +17,7 @@ function ProjectPage(){
     const [userProjects, setUserProjects] = useState([]);
     const [userFiles, setUserFiles] = useState([]);
     const [foundFiles, setFoundFiles] = useState(true);
-    const [isLoading, setLoading] = useState(true)
+    const [isLoading, setLoading] = useState(true);
 
     useEffect(async () => {
         const result = localStorage.getItem("user");
@@ -26,8 +26,6 @@ function ProjectPage(){
                 const docRef = doc(db, "users", result);
                 const docSnap = await getDoc(docRef);
                 const test = docSnap.data();
-                setUserName(test["firstName"]);
-                localStorage.setItem("userFirstName",test["firstName"]);
                 const q = query(collection(db, result));
                 const querySnapshot = await getDocs(q);
                 querySnapshot.forEach(async (docum) => {
@@ -43,6 +41,7 @@ function ProjectPage(){
             }catch(error){
 
             }
+            localStorage.setItem("userFiles", userFiles);
     }, [])
 
     const toggle = () =>{
@@ -53,7 +52,7 @@ function ProjectPage(){
         <>
             <SidebarUser isOpen={isOpen} toggle={toggle}/>
             <NavbarUser toggle={toggle}/>
-            <ProjectUser isLoading ={isLoading} userFiles = {userFiles} userName = {userName} foundFiles = {foundFiles}/>
+            <ProjectUser isLoading ={isLoading} userFiles = {userFiles} foundFiles = {foundFiles}/>
             <Footer />
         </>
     )

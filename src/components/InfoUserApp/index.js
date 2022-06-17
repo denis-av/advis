@@ -10,8 +10,7 @@ import FileDownload from "js-file-download";
 
 function InfoAppUser (){
 
-    const downloadApplication=(e)=>{
-        e.preventDefault();
+    const downloadApplication = (e) =>{
         console.log("test");
         Axios({
           url: "http://localhost:3001/DownloadApplication",
@@ -19,7 +18,7 @@ function InfoAppUser (){
           responseType: "blob"
         }).then((res) => {
           console.log(res);
-          FileDownload(res.data,"ADVIS_application_v.1.0.zip");
+          FileDownload(res.data,"ADVIS_application_v_1_0.zip");
         })
     }
 
