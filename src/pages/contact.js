@@ -1,7 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import {ReactComponent as YourSvg} from '../images/undraw_icon_design_re_9web.svg';
-import { signInWithEmailAndPassword  } from "firebase/auth";
+import { collection, query, getDocs, doc, setDoc, getDoc } from "firebase/firestore";
 import { auth, db } from '../App';
 import { useNavigate } from 'react-router-dom';
 import { BigContainer } from '../components/Signup/SignupElements';
@@ -39,6 +38,37 @@ function Contact() {
 
     const handleMessage = event => {
         setMessage(event.target.value);
+    }
+
+    const uploadMessageToAdminDB = async () => {
+        const docRef = doc(db, "admin", "contact");
+        const docSnap = await getDoc(docRef);
+        const messages = [];
+        if(docSnap.data() != null){
+            if(docSnap.data().allMessages.length > 0){
+                docSnap.data().allMessages.forEach((elem) => {
+                    messages.push(elem);
+                })
+            }
+        }
+        const obj = {
+                    firstName: firstName,
+                    lastName: lastName,
+                    phone: phone,
+                    email: email,
+                    message: message
+        }
+        messages.push(obj);
+        console.log(messages);
+        const update = {
+            allMessages: messages
+        }
+        await setDoc(doc(db, "admin", "contact"), update);
+        setFirstName("");
+        setLastName("");
+        setPhone("");
+        setEmail("");
+        setMessage("");
     }
 
         return (
@@ -113,7 +143,7 @@ function Contact() {
                                 </LabelInput>
                             </RowCellForm>
                             <RowCellForm>
-                                <FormButton>Trimite</FormButton>
+                                <FormButton onClick={uploadMessageToAdminDB}>Trimite</FormButton>
                             </RowCellForm>
                         </InfoWrapperForm>
                     </FormContent>
