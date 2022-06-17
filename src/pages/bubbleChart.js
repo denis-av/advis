@@ -57,7 +57,7 @@ export default function BubbleChart({width, height}) {
         const min = Math.min.apply(null, values);
         const max = Math.max.apply(null, values);
 
-        var diameter = 850;
+        var diameter = parseInt(localStorage.getItem("diameter"));
 
         var bubble = d3.pack()
                         .size([diameter, diameter])

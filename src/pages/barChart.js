@@ -23,7 +23,7 @@ const Wrapp = styled.div`
     }
 `
 
-export default function Treemap({width, height}) {
+export default function BarChart({width, height}) {
   const data = JSON.parse(localStorage.getItem('data'));
   const svgRef = useRef(null);
   const legendRef = useRef(null);
@@ -45,7 +45,11 @@ export default function Treemap({width, height}) {
     function renderTreemap() {
         const svg = d3.select(svgRef.current).attr("width", width + 100)
                                             .attr("height", height + 100)
-                                            .append("g");
+                                            // .style("margin-left", -margin.left + "px")
+                                            // .style("margin-right", -margin.right + "px")
+                                            .append("g")
+                                            //.attr("transform", "translate(100,100)")
+                                            //.style("shape-rendering", "crispEdges");
 
         var pathsWithColor = [];
         var objPathColor = {};
@@ -72,13 +76,34 @@ export default function Treemap({width, height}) {
 
         // create treemap layout
         const treemapRoot = d3.treemap().size([width, height])(root);
-        //console.log(treemapRoot);
+        console.log(treemapRoot.leaves());
+        const valuesOfArray = [];
+        treemapRoot.leaves().forEach((elem) => { valuesOfArray.push(detectJSONAttribute(elem.data)); });
+        const min = Math.min(...valuesOfArray);
+        const max = Math.max(...valuesOfArray);
+        console.log(min);
+        console.log(max);
+
+        treemapRoot.leaves().forEach((elem) => { console.log(elem.data.name + getHeight(elem.data)) });
+
+        function getHeight(d){
+            return parseInt(detectJSONAttribute(d)) * parseInt(height) / parseInt(max);
+        }
+
+        let startDesign = "0";
+        const rectWidth = parseInt(width) / treemapRoot.leaves().length;
+
         // create 'g' element nodes based on data
         var nodes = svg.selectAll('g')
                 .data(treemapRoot.leaves())
                 .enter()
                 .append('g')
-                .attr("transform", function(d) { return "translate(" + d.x0 + "," + d.y0 + ")"; })
+                .attr("transform", function(d) { 
+                    const xPosition = startDesign;
+                    startDesign = parseInt(startDesign) + rectWidth;
+                    console.log(startDesign);
+                    const yPosition = parseInt(height) - getHeight(d);
+                    return "translate(" + xPosition + "," +  yPosition + ")"; })
                 .attr("overflow","hidden");
             
         // create color scheme and fader
@@ -87,8 +112,8 @@ export default function Treemap({width, height}) {
 
         // add treemap rects
         nodes.append('rect')
-        .attr("width", function(d) { return d.x1 - d.x0; })
-        .attr("height", function(d) { return d.y1 - d.y0; })
+        .attr("width", rectWidth)
+        .attr("height", function(d) { return getHeight(d) })
             .attr('fill', (d) => identifyColor(d))
             .on("mousemove", function (event, d) {
                 tool.style("left", event.pageX + 10 + "px")
@@ -97,7 +122,7 @@ export default function Treemap({width, height}) {
                 tool.html(d.children ? null : "<b>" + generateParentName(d) + "<br>" + d.data.name  + "<br>" +  detectJSONAttribute(d.data) + "</b>");
             }).on("mouseout", function (d) {
                 tool.style("display", "none");
-            });
+            });  
 
         const fontSize = 9;
 
@@ -105,19 +130,27 @@ export default function Treemap({width, height}) {
         .attr("id", function(d) { return "clip-" + d.data.id; })
         .append("rect")
         .attr("width", d => d.x1 - d.x0)
-        .attr("height", d => d.y1 - d.y0);
+        .attr("height", d => d.y1 - d.y0);  
 
         nodes.append("text")
-            .attr("clip-path", function(d) { return "url(#clip-" + d.data.id + ")"; })
-            .selectAll("tspan")
-            .data(function(d) { return (d.data.name + "\n" + detectJSONAttribute(d.data)).split(/\n/g); })
-            .join("tspan")
-                .attr("x", 3)
-                .attr("y", (d, i, D) => `${(i === D.length - 1) * 0.3 + 1.1 + i * 0.9}em`)
-                .attr('font-size', `${fontSize}px`)
-                .attr("font-weight","bold")
-                .attr("style","@media only screen and (max-width: 960px)  {font-size: 9px}")
-                .text(d => d);   
+        .attr("clip-path", function(d) { return "url(#clip-" + d.data.id + ")"; })
+        .selectAll("tspan")
+        .data(function(d) { return d.data.name.split(/\n/g); })
+        .join("tspan")
+            .attr("x", 3)
+            .attr("y", (d, i, D) => `${(i === D.length - 1) * 0.3 + 1.1 + i * 0.9}em`)
+            .attr('font-size', `${fontSize}px`)
+            .attr("font-weight","bold")
+            .attr("style","@media only screen and (max-width: 960px)  {font-size: 9px}")
+            .text(d => getLabel(d));
+
+        function getLabel(d) {
+            console.log(d.length);
+            if (d.length  < rectWidth / 7) {
+                return d;
+            }
+            return '';
+        }
 
         let categories = pathsWithColor;
         const legendContainer = d3.select(legendRef.current);
@@ -166,26 +199,6 @@ export default function Treemap({width, height}) {
             .style("color","#ffffff")
             .text((d) => { return "Obiecte ale căror size aparține intervalului [" + d.min + " , " + d.max + "]"});
 
-
-        // function identifyColor(d){
-        //     let color = "";
-        //     if(localStorage.getItem("color") === "pachet"){
-        //         pathsWithColor.forEach((elem) => {
-        //             let pathName = generateName(d).substring(0,generateName(d).lastIndexOf("."));
-        //             if(pathName === elem.path) {
-        //                 color = elem.color;
-        //             }
-        //         });
-        //     }
-        //     else if(localStorage.getItem("color") === "scale"){
-        //         intervals.forEach((elem) => {
-        //             if(d.data.value >= elem.min && d.data.value < elem.max){
-        //                 color = elem.color;
-        //             };
-        //         })
-        //     }
-        //     return color;
-        // }
 
         function generateName(d) {
             var res = "";
@@ -363,7 +376,7 @@ export default function Treemap({width, height}) {
     if(value === "treemapStatic") return "STATIC TREEMAP";
     else if(value === "treemapZoomable" ) return "ZOOMABLE TREEMAP";
         else if(value === "bubbleChart" ) return "BUBBLE CHART";
-            else if(value === "collapsible" ) return "COLLAPSIBLE TREE";
+            else if(value === "barchart" ) return "BAR CHART";
 
   }
 
