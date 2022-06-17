@@ -12,7 +12,7 @@ function NavbarUser({toggle}){
 
   function LogoutUser(e) {
     signOut(auth).then(() => {
-      navigate("/home");
+      navigate("/");
       localStorage.removeItem("documentName");
       localStorage.removeItem("height");
       localStorage.removeItem("projectName");
@@ -50,12 +50,9 @@ function NavbarUser({toggle}){
               <NavItem>
                   <NavLinks to='/documentation'>Documentatie</NavLinks>
               </NavItem>
-              <NavItem>
-                  <NavLinks to=''>Profil</NavLinks>
-              </NavItem>
           </NavMenu>
           <NavBtn>
-              <NavBtnLink to='/home' onClick={LogoutUser}>Logout</NavBtnLink>
+              <NavBtnLink to='/' onClick={LogoutUser}>Logout</NavBtnLink>
           </NavBtn>
         </NavbarContainer>
       </Nav>

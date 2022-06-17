@@ -1,8 +1,7 @@
 import React from 'react'
-import { SidebarContainer, Icon, CloseIcon, SideBtnWrap, SidebarWrapper, SidebarRoute, SidebarMenu, SidebarLink } from './SidebarElements';
+import { SidebarContainer, Icon, CloseIcon, SideBtnWrap, SidebarWrapper, SidebarRoute, SidebarMenu, SidebarLink } from '../Sidebar/SidebarElements';
 
-export default class SidebarUser extends React.Component {
-    render(){
+function SidebarAdmin () {
         return (
             <SidebarContainer isOpen={this.props.isOpen} onClick={this.props.toggle} style={{backgroundImage: "linear-gradient(#bfbdc1, #fcfcff)",backgroundPosition: 'center',
             backgroundSize: 'cover',
@@ -14,13 +13,13 @@ export default class SidebarUser extends React.Component {
                 </Icon>
                 <SidebarWrapper>
                     <SidebarMenu>
-                        <SidebarLink to='/mainPage' onClick={this.props.toggle}>Home</SidebarLink>
-                        <SidebarLink to='/projects' onClick={this.props.toggle}>Proiecte</SidebarLink>
-                        <SidebarLink to='/documentation' onClick={this.props.toggle}>Documentatie</SidebarLink>
+                        <SidebarLink to='/adminMainPage' onClick={this.props.toggle}>Home</SidebarLink>
+                        <SidebarLink to='/statistics' onClick={this.props.toggle}>Statistici</SidebarLink>
+                        <SidebarLink to='/messagesFromUsers' onClick={this.props.toggle}>Mesaje</SidebarLink>
                     </SidebarMenu>
                 </SidebarWrapper>
             </SidebarContainer>
             )
-    }
-  
 }
+
+export default SidebarAdmin
