@@ -20,6 +20,9 @@ import ProtectedRoutesForAdmin from './ProtectedRoutesForAdmin';
 import StatisticsPage from './pages/statisticsPage';
 import Documentation from './pages/documentationPage';
 import Contact from './pages/contact';
+import MessagesFromUsers from './pages/messagesFromUsers';
+import { Redirect } from 'react-router';
+import DeleteProjects from './pages/deleteProjects';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAiIcMgbswZMZ8up2cQi-JtO7TtkhmDIXQ",
@@ -43,7 +46,7 @@ export default class App extends React.Component {
     return (
       <Router>
           <Routes>
-            <Route exact path="/home" element={<Home/>}/>
+            <Route exact path="/" element={<Home/>}/>
             <Route exact path="/signup" element={<Registration/>}/>
             <Route exact path="/signin" element={<Login/>}/>
             <Route exact path="/signin/resetPassword" element={<ResetPassword/>}/>
@@ -58,6 +61,7 @@ export default class App extends React.Component {
             <Route element={<ProtectedRoutesForAdmin />}>
               <Route exact path="/adminMainPage" element={<AdminMainPage/>} />
               <Route exact path="/statistics" element={<StatisticsPage/>} />
+              <Route exact path="/messagesFromUsers" element={<MessagesFromUsers />} />
             </Route>
           </Routes>
       </Router>
