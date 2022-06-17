@@ -12,7 +12,7 @@ function NavbarAdmin({toggle}){
 
   function LogoutUser(e) {
     signOut(auth).then(() => {
-      navigate("/home");
+      navigate("/");
     }).catch((error) => {
       // An error happened.
     });
@@ -27,15 +27,18 @@ function NavbarAdmin({toggle}){
               <FaBars />
           </MobileIcon>
           <NavMenu>
+            <NavItem>
+                  <NavLinks to='/adminMainPage'>Home</NavLinks>
+              </NavItem>
               <NavItem>
                   <NavLinks to='/statistics'>Statistici</NavLinks>
               </NavItem>
               <NavItem>
-                  <NavLinks to=''>Utilizatori</NavLinks>
+                  <NavLinks to='/messagesFromUsers'>Mesaje</NavLinks>
               </NavItem>
           </NavMenu>
           <NavBtn>
-              <NavBtnLink to='/home' onClick={LogoutUser}>Logout</NavBtnLink>
+              <NavBtnLink to='/' onClick={LogoutUser}>Logout</NavBtnLink>
           </NavBtn>
         </NavbarContainer>
       </Nav>

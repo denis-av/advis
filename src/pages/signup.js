@@ -81,8 +81,8 @@ export default class Signup extends React.Component{
                     <FormWrap>
                         <InfoRow imgStart={false}>
                             <Column1>
-                            <ImgWrap style={{display:'flex', alignContent:'center',alignItems:'center'}}>
-                                <YourSvg style={{width: "100%"}}/>
+                                <ImgWrap style={{display:'flex', alignContent:'center',alignItems:'center'}}>
+                                    <YourSvg style={{width: "100%"}}/>
                                 </ImgWrap>
                             </Column1>
                             <Column2>

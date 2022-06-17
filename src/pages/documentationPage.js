@@ -10,6 +10,10 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from '../App';
 import { FormButton } from '../components/Signup/SignupElements';
 import { useNavigate } from 'react-router-dom';
+import DocumentationAnalyze from '../components/DocumentationAnalyze';
+import DocumentationDiagram from '../components/DocumentationDiagram';
+import DocumentationApp from '../components/DocumentationApp';
+import DocumentationJSON from '../components/DocumentationJSON';
 
 
 function Documentation() {
@@ -41,6 +45,10 @@ function Documentation() {
             <>
                 <SidebarUser isOpen={isOpen} toggle={toggle} />
                 <NavbarUser toggle={toggle}/>
+                <DocumentationAnalyze />
+                <DocumentationDiagram />
+                <DocumentationApp />
+                <DocumentationJSON />
                 <Footer />
             </>
         )

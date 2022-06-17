@@ -25,7 +25,6 @@ const Wrapp = styled.div`
 
 export default function Treemap({width, height}) {
   const data = JSON.parse(localStorage.getItem('data'));
-  console.log(data);
   const svgRef = useRef(null);
   const legendRef = useRef(null);
   const legendIntrvRef = useRef(null);
@@ -46,11 +45,7 @@ export default function Treemap({width, height}) {
     function renderTreemap() {
         const svg = d3.select(svgRef.current).attr("width", width + 100)
                                             .attr("height", height + 100)
-                                            // .style("margin-left", -margin.left + "px")
-                                            // .style("margin-right", -margin.right + "px")
-                                            .append("g")
-                                            //.attr("transform", "translate(100,100)")
-                                            //.style("shape-rendering", "crispEdges");
+                                            .append("g");
 
         var pathsWithColor = [];
         var objPathColor = {};
@@ -128,9 +123,6 @@ export default function Treemap({width, height}) {
         const legendContainer = d3.select(legendRef.current);
         legendContainer.attr('width', width).attr('height', categories.length * 34);
 
-        console.log("hahaha");
-        console.log(categories);
-
         categories = categories.filter(
         (category, index, self) => self.indexOf(category) === index,
         );
@@ -156,9 +148,6 @@ export default function Treemap({width, height}) {
         let intervalsOfColors = intervals;
         const legendForScale = d3.select(legendIntrvRef.current);
         legendForScale.attr('width', width).attr('height', intervalsOfColors.length * 34);
-
-        console.log("hahaha");
-        console.log(intervalsOfColors);
 
         const legendScale = legendForScale.selectAll('g').data(intervalsOfColors).join('g');
 
@@ -219,8 +208,6 @@ export default function Treemap({width, height}) {
             });
             const min = Math.min(...values);
             const max = Math.max(...values)
-            console.log(min);
-            console.log(max);
             let step = (max - min) / 10;
             [ ...Array(10) ].forEach((e, i) => {
                 const intrv = {};
@@ -231,7 +218,6 @@ export default function Treemap({width, height}) {
                 intrv.color = generateColorForScale(i);
                 intervals.push(intrv);
             });
-            console.log(intervals);
         }
 
         function generateColorForScale(d){

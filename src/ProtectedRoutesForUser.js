@@ -7,7 +7,7 @@ const useAuth = () =>{
 const ProtectedRoutesForUser = () =>{
     const isAuth = useAuth();
     console.log(isAuth);
-    return isAuth ? <Outlet /> : <Navigate to="/home" />;
+    return isAuth ? <Outlet /> : <Navigate to="/" />;
 }
 
 export default ProtectedRoutesForUser;

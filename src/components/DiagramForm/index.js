@@ -60,11 +60,11 @@ function DiagramForm() {
 
     const handleNewProject = event => {
         if(event.target.value === "Da") {
-            setNewProject(true);
+            setNewProject(false);
             setNewProjectLabel("Da");
         }
         else{
-            setNewProject(false);
+            setNewProject(true);
             setNewProjectLabel("Nu");
         }
     }
@@ -96,8 +96,19 @@ function DiagramForm() {
         reader.readAsText(event.target.files[0]);
     }
 
+    const ResetInputsFormUser = event => {
+        setProjectName("");
+        setDiagramName("");
+        setFileContent("");
+        setDiagramType("");
+        setFileName("");
+        setNewProject("");
+    }
+
     async function CreateDiagramInDB(e){
-        if(newProject  === true){
+        //user
+        const user = localStorage.getItem("user");
+        if(newProject  === false){
             //construire obiect
             const docData = {
                 //diagramType: diagramType,
@@ -107,8 +118,6 @@ function DiagramForm() {
             map.set(diagramName, docData);
             //transformare din map in object
             const objectDiagram = Object.fromEntries(map);
-            //user
-            const user = localStorage.getItem("user");
             // preluare date din FireStore
             const docRef = doc(db, user, projectName);
             const docSnap = await getDoc(docRef);
@@ -133,16 +142,9 @@ function DiagramForm() {
             map.set(diagramName, docData);
             //transformare din map in object
             const objectDiagram = Object.fromEntries(map);
-            //user
-            const user = localStorage.getItem("user");
             await setDoc(doc(db, user, projectName), objectDiagram);
         }
-        setProjectName("");
-        setDiagramName("");
-        setFileContent("");
-        setDiagramType("");
-        setFileName("");
-        setNewProject("");
+        ResetInputsFormUser();
         setErrorMessage("Diagrama a fost creată cu succes!")
         navigate("/mainPage");
     }

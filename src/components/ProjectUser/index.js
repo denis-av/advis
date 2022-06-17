@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ButtonProj, ButtonWrap, Container, DiagramsDetails,TopLine, ProjectBttn, DiagramWrapp,ColorSelect,BtnNew, DimensionWrap, Heading,HeadingTitle, ProjectForm, ProjectMessage, ProjectsDocuments, ProjectsName, ProjectsWrappers, ServicesIcon, Settings, TabButtonCreate, TabColor, TabDiagramType, TabDimension, Tabs, Title, DimensionSection, Label, Input, BtnText, ProjectsWrapp } from './ProjectUserElements';
+import { ButtonProj, ButtonWrap, Container, DiagramsDetails,TopLine, ProjectBttn, DiagramWrapp,ColorSelect,BtnNew,BtnNew2, DimensionWrap, Heading,HeadingTitle, ProjectForm, ProjectMessage, ProjectsDocuments, ProjectsName, ProjectsWrappers, ServicesIcon, Settings, TabButtonCreate, TabColor, TabDiagramType, TabDimension, Tabs, Title, DimensionSection, Label, Input, BtnText, ProjectsWrapp } from './ProjectUserElements';
 import Icon from '../../images/loading.png';
 import "./style.css"
 import {Transition, CSSTransition, SwitchTransition, TransitionGroup} from "react-transition-group";
@@ -18,6 +18,7 @@ import {
     FullCircle2, 
 
 } from '../DiagramForm/DiagramFormElements';
+import { local } from 'd3-selection';
 
 const duration = 300;
 
@@ -219,6 +220,12 @@ function ProjectUser({isLoading, userName, userFiles, foundFiles}){
         navigate("/createDiagram");
     }
 
+    const goToDeletePage = () => {
+        navigate("/deleteProjects");
+        localStorage.setItem("userFiles", userFiles );
+        localStorage.setItem("foundFiles", foundFiles);
+    }
+
     const handleDimension = () => {
         if(diagramType === "bubbleChart"){
             return (
@@ -360,7 +367,7 @@ function ProjectUser({isLoading, userName, userFiles, foundFiles}){
                                                                     <option value="treemapStatic">Treemap static</option>
                                                                     <option value="treemapZoomable">Treemap zoomable</option>
                                                                     <option value="bubbleChart">BubbleChart</option>
-                                                                    <option value="collapsible">CollapsibleTree</option>
+                                                                    <option value="barchart">BarChart</option>
                                                                 </ColorSelect>
                                                             </TabDiagramType>
                                                             <Transition in={selectDiagramType} timeout={300}>

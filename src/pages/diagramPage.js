@@ -13,6 +13,7 @@ import "../styles/style_zoomable.css"
 import "../pages/style_bubblechart.css"
 import BubbleChart from './bubbleChart';
 import CollapsibleTree from './collapsibleTree';
+import BarChart from './barChart';
 
 
 function DiagramPage(){
@@ -30,6 +31,7 @@ function DiagramPage(){
         if(value === "treemapStatic") return <Treemap width={parseInt(localStorage.getItem("width"))} height={parseInt(localStorage.getItem("height"))} />;
         else if(value === "treemapZoomable" ) return <ZoomableTreemap width={parseInt(localStorage.getItem("width"))} height={parseInt(localStorage.getItem("height"))} />;
             else if(value === "bubbleChart" ) return <BubbleChart width={parseInt(localStorage.getItem("width"))} height={parseInt(localStorage.getItem("height"))} />;
+                else if(value === "barchart" ) return <BarChart width={parseInt(localStorage.getItem("width"))} height={parseInt(localStorage.getItem("height"))} />;
     }
 
         return (

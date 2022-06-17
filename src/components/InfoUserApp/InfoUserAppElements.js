@@ -107,7 +107,7 @@ export const TextAreaInfo = styled.div`
     width: 50%;
     height: 80%;
     margin: auto;
-    margin-top: 10vh;
+    margin-top: 5vh;
     margin-left: 0%;
 `
 export const TopLine = styled.p`
@@ -127,8 +127,8 @@ export const Heading = styled.h1`
     font-weight: 600;
     color: ${({ lightText}) => lightText ? '#f7f8fa' :'#010606'};
 
-    @media screen and (max-width: 480px){
-        font-size: 32px;
+    @media screen and (max-width: 1600px){
+        font-size: 22px;
     }
 `;
 
@@ -138,6 +138,10 @@ export const Subtitle = styled.p`
     font-size: 18px;
     line-height: 24px;
     color: ${({darkText}) => darkText ? '#010606' : '#fff'};
+
+    @media screen and (max-width: 1600px){
+        font-size: 15px;
+    }
 `;
 
 export const TextDiv = styled.div`
@@ -158,6 +162,10 @@ export const ImageWrapper = styled.div`
 
 export const ServicesIcon = styled.img`
     margin:auto;
+    @media screen and (max-width: 1600px){
+        width: 500px;
+        height: auto;
+    }
 `
 
 export const ServicesIcon2 = styled.img`
