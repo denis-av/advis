@@ -29,7 +29,7 @@ function ResetPassword() {
                                                             backgroundSize: 'cover',
                                                             backgroundRepeat: 'no-repeat'}}>
                     <IconWrap>
-                        <Icon to="/home">advis</Icon>
+                        <Icon to="/">advis</Icon>
                     </IconWrap>
                     <SignInContent>
                         <SignInForm>

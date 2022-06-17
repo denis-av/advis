@@ -60,6 +60,16 @@ function Registration(){
         setPasswordConfirmed(event.target.value);
       }
 
+    const refreshInputFromUser = event => {
+        setLastName("");
+        setFirstName("");
+        setMobile("");
+        setOccupation("");
+        setEmail("");
+        setPassword("");
+        setPasswordConfirmed("");
+    }
+
     function CreateAccount(e) {
             if(password === passwordConfirmed){
                 createUserWithEmailAndPassword(auth, email, password)
@@ -74,13 +84,7 @@ function Registration(){
                     const user = email.substring(0,email.indexOf("@"));
                     console.log(user);
                     await setDoc(doc(db, "users", user), docData);
-                    setLastName("");
-                    setFirstName("");
-                    setMobile("");
-                    setOccupation("");
-                    setEmail("");
-                    setPassword("");
-                    setPasswordConfirmed("");
+                    refreshInputFromUser();
                     setTextError("Cont creat cu succes");
                     navigate("/signin");
                 })
@@ -97,12 +101,7 @@ function Registration(){
                             setTextError("Parola este prea slaba!");
                             break;
                     };
-                    setLastName("");
-                    setFirstName("");
-                    setMobile("");
-                    setOccupation("");
-                    setEmail("");
-                    setPassword("");
+                    refreshInputFromUser();
                     setPasswordConfirmed("");
                 });
             }else{
@@ -113,7 +112,7 @@ function Registration(){
             <>
             <SignUpContainer>
                     <IconWrap>
-                        <Icon to="/home">advis</Icon>
+                        <Icon to="/">advis</Icon>
                     </IconWrap>
                     <BigContainer>
                     <CircleImage>
